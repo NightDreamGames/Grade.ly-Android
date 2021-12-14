@@ -60,4 +60,6 @@
     <string name="reset">Reset Marks</string>
     <string name="reset_summary">Delete all saved marks and reset app</string>
     <string name="github">GitHub repository</string>
+    <string name="language">Language</string>
+    <string name="defautl">Default</string>
 </resources>

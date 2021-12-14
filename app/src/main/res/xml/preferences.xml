@@ -60,10 +60,19 @@
         <ListPreference
             app:defaultValue="auto"
             app:entries="@array/dark_theme"
-            app:entryValues="@array/dark_theme_value"
+            app:entryValues="@array/dark_theme_values"
             app:icon="@drawable/ic_outline_dark_mode_24"
             app:key="dark_theme"
             app:title="@string/dark_theme"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="default"
+            app:entries="@array/language"
+            app:entryValues="@array/language_values"
+            app:icon="@drawable/ic_outline_language_24"
+            app:key="language"
+            app:title="@string/language"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 

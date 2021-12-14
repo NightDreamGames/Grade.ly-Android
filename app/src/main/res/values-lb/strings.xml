@@ -60,4 +60,6 @@
     <string name="reset">Notten zerécksetzen</string>
     <string name="reset_summary">All gespäichert Notten läschen an d\'App zeréckzesetzen</string>
     <string name="github">GitHub Repository</string>
+    <string name="language">Sprooch</string>
+    <string name="defautl">Default</string>
 </resources>

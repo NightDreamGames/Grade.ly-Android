@@ -1,7 +1,11 @@
 package com.NightDreamGames.Grade.ly.Activities;
 
+import android.annotation.TargetApi;
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +15,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +24,8 @@ import com.NightDreamGames.Grade.ly.Calculator.Period;
 import com.NightDreamGames.Grade.ly.Misc.CustomRecyclerViewAdapter;
 import com.NightDreamGames.Grade.ly.R;
 import com.NightDreamGames.Grade.ly.databinding.MainSubjectActivityBinding;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements CustomRecyclerViewAdapter.ItemClickListener {
 
@@ -208,5 +215,38 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(updateBaseContextLocale(base));
+    }
+
+    private Context updateBaseContextLocale(Context context) {
+        String language = String.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString("language", "en"));
+
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return updateResourcesLocale(context, locale);
+        }
+
+        return updateResourcesLocaleLegacy(context, locale);
+    }
+
+    @TargetApi(Build.VERSION_CODES.N)
+    private Context updateResourcesLocale(Context context, Locale locale) {
+        Configuration configuration = context.getResources().getConfiguration();
+        configuration.setLocale(locale);
+        return context.createConfigurationContext(configuration);
+    }
+
+    private Context updateResourcesLocaleLegacy(Context context, Locale locale) {
+        Resources resources = context.getResources();
+        Configuration configuration = resources.getConfiguration();
+        configuration.locale = locale;
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+        return context;
     }
 }

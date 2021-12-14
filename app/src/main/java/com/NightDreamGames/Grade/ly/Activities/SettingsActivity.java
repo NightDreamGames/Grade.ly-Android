@@ -74,6 +74,7 @@ public class SettingsActivity extends AppCompatActivity {
             androidx.preference.Preference dark = findPreference("dark_theme");
             androidx.preference.Preference reset = findPreference("reset");
             androidx.preference.Preference github = findPreference("github");
+            androidx.preference.Preference language = findPreference("language");
 
             etp.setVisible(Manager.getPreference("total_marks", "60").equals("-1"));
             es.setOnPreferenceClickListener(preference -> {
@@ -124,6 +125,12 @@ public class SettingsActivity extends AppCompatActivity {
             github.setOnPreferenceClickListener(preference -> {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/NightDreamGames/Grade.ly"));
                 startActivity(browserIntent);
+                return true;
+            });
+
+            language.setOnPreferenceChangeListener((preference, newValue) -> {
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
                 return true;
             });
 

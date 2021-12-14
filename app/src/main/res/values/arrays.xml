@@ -59,9 +59,25 @@
         <item>@string/light_mode_on</item>
         <item>@string/light_mode_off</item>
     </string-array>
-    <string-array name="dark_theme_value">
+    <string-array name="dark_theme_values">
         <item>"auto"</item>
         <item>"on"</item>
         <item>"off"</item>
+    </string-array>
+
+    <!-- Language Preference -->
+    <string-array name="language">
+        <item>@string/defautl</item>
+        <item>@string/english</item>
+        <item>@string/german</item>
+        <item>@string/french</item>
+        <item>@string/luxemburgish</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>"default"</item>
+        <item>"en"</item>
+        <item>"de"</item>
+        <item>"fr"</item>
+        <item>"lb"</item>
     </string-array>
 </resources>

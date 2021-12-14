@@ -60,4 +60,6 @@
     <string name="reset">Réinitialiser les notes</string>
     <string name="reset_summary">Supprimer toutes les notes enregistrées et réinitialiser l\'application</string>
     <string name="github">Repository GitHub</string>
+    <string name="language">Langue</string>
+    <string name="defautl">Par défaut</string>
 </resources>
