@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Basic colors -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+
+    <!-- Grey shades -->
+    <color name="grey_50">#FAFAFA</color>
+    <color name="grey_200">#EEEEEE</color>
+    <color name="grey_300">#dcdcdc</color>
+    <color name="grey_600">#757575</color>
+    <color name="grey_900">#111111</color>
+
+    <!-- Light theme colors -->
+    <color name="blue_500">#3f83b1</color>
+    <color name="blue_600">#346c92</color>
+    <color name="blue_350">#4fa9e6</color>
+    <color name="blue_50">#BBDEFB</color>
+
+    <!-- Dark theme colors -->
+    <color name="blue_grey_950">#151d26</color>
+    <color name="blue_grey_900">#222e3c</color>
+    <color name="blue_300">#61a9e0</color>
+</resources>

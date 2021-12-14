@@ -1,0 +1,52 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Grade.ly" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorPrimaryVariant">@color/blue_500</item>
+        <item name="colorOnPrimary">@color/grey_600</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue_350</item>
+        <item name="colorSecondaryVariant">@color/blue_350</item>
+        <item name="colorOnSecondary">@color/grey_50</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/blue_600</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="backgroundColor">@color/grey_50</item>
+        <item name="android:selectableItemBackground">@color/grey_50</item>
+        <item name="android:navigationBarColor">@color/grey_50</item>
+        <item name="colorOnBackground">@color/grey_900</item>
+        <item name="android:textColor">@color/grey_900</item>
+        <item name="android:textColorPrimary">@color/grey_50</item>
+        <item name="dividerColor">@color/grey_300</item>
+        <item name="dividerColorDark">@color/grey_600</item>
+        <item name="colorControlNormal">@color/grey_50</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="iconColor">@color/grey_600</item>
+    </style>
+
+    <style name="Theme.Grade.ly.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Grade.ly.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.ActionBar" />
+
+    <style name="Theme.Grade.ly.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="buttonBarNegativeButtonStyle">@style/ButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/ButtonStyle</item>
+        <item name="android:colorAccent">@color/blue_500</item>
+
+        <item name="android:textColor">@color/grey_900</item>
+        <item name="android:textColorPrimary">@color/grey_900</item>
+
+        <item name="drawableTint">@color/blue_600</item>
+    </style>
+
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/blue_500</item>
+    </style>
+</resources>

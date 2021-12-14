@@ -1,0 +1,67 @@
+<resources>
+    <!-- Period Preference -->
+    <string-array name="period_entries">
+        <item>@string/trimesters</item>
+        <item>@string/semesters</item>
+        <item>@string/year</item>
+    </string-array>
+    <string-array name="period_values">
+        <item>period_trimester</item>
+        <item>period_semester</item>
+        <item>period_year</item>
+    </string-array>
+
+    <!-- Mark Preference -->
+    <string-array name="mark_entries">
+        <item>10</item>
+        <item>20</item>
+        <item>60</item>
+        <item>100</item>
+        <item>@string/custom</item>
+    </string-array>
+    <string-array name="mark_values">
+        <item>10</item>
+        <item>20</item>
+        <item>60</item>
+        <item>100</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Rounding mode Preference -->
+    <string-array name="rounding_mode_entries">
+        <item>@string/up</item>
+        <item>@string/down</item>
+        <item>@string/half_up</item>
+        <item>@string/half_down</item>
+    </string-array>
+    <string-array name="rounding_mode_values">
+        <item>rounding_up</item>
+        <item>rounding_down</item>
+        <item>rounding_half_up</item>
+        <item>rounding_half_down</item>
+    </string-array>
+
+    <!-- Round to Preference -->
+    <string-array name="round_to_entries">
+        <item>@string/to_integer</item>
+        <item>@string/to_10th</item>
+        <item>@string/to_100th</item>
+    </string-array>
+    <string-array name="round_to_values">
+        <item>1</item>
+        <item>10</item>
+        <item>100</item>
+    </string-array>
+
+    <!-- Dark theme Preference -->
+    <string-array name="dark_theme">
+        <item>@string/light_mode_auto</item>
+        <item>@string/light_mode_on</item>
+        <item>@string/light_mode_off</item>
+    </string-array>
+    <string-array name="dark_theme_value">
+        <item>"auto"</item>
+        <item>"on"</item>
+        <item>"off"</item>
+    </string-array>
+</resources>

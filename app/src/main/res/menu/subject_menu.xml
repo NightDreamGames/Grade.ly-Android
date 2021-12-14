@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.NightDreamGames.Grade.ly.Activities.MainActivity">
+    <item
+        android:id="@+id/sort_by"
+        android:orderInCategory="100"
+        android:title="@string/sort_by"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/sort_az"
+                android:orderInCategory="100"
+                android:title="@string/az"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/sort_mark"
+                android:orderInCategory="100"
+                android:title="@string/marks"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+</menu>

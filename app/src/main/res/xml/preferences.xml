@@ -1,0 +1,92 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory app:title="@string/general">
+        <Preference
+            app:icon="@drawable/ic_baseline_school_24"
+            app:key="edit_subjects"
+            app:summary="@string/edit_subjects_summary"
+            app:title="@string/edit_subjects" />
+
+        <ListPreference
+            app:defaultValue="period_trimester"
+            app:entries="@array/period_entries"
+            app:entryValues="@array/period_values"
+            app:icon="@drawable/ic_outline_access_time_24"
+            app:key="period"
+            app:title="@string/period"
+            app:useSimpleSummaryProvider="true" />vi
+
+        <ListPreference
+            app:defaultValue="60"
+            app:entries="@array/mark_entries"
+            app:entryValues="@array/mark_values"
+            app:icon="@drawable/ic_file_regular"
+            app:key="total_marks"
+            app:title="@string/rating_system"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:defaultValue="60"
+            app:dialogTitle="@string/custom_rating_system"
+            app:key="custom_mark"
+            app:title="@string/custom_rating_system"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="rounding_up"
+            app:entries="@array/rounding_mode_entries"
+            app:entryValues="@array/rounding_mode_values"
+            app:icon="@drawable/ic_arrows_alt_v_solid"
+            app:key="rounding_mode"
+            app:title="@string/rounding_mode"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="1"
+            app:entries="@array/round_to_entries"
+            app:entryValues="@array/round_to_values"
+            app:icon="@drawable/ic_baseline_content_cut_24"
+            app:key="round_to"
+            app:title="@string/round_to"
+            app:useSimpleSummaryProvider="true" />
+
+        <Preference
+            app:icon="@drawable/ic_baseline_clear_all_24"
+            app:key="reset"
+            app:summary="@string/reset_summary"
+            app:title="@string/reset" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/appearance">
+        <ListPreference
+            app:defaultValue="auto"
+            app:entries="@array/dark_theme"
+            app:entryValues="@array/dark_theme_value"
+            app:icon="@drawable/ic_outline_dark_mode_24"
+            app:key="dark_theme"
+            app:title="@string/dark_theme"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/about">
+        <Preference
+            app:icon="@drawable/ic_gradely"
+            app:persistent="false"
+            app:selectable="false"
+            app:summary="@string/about_text"
+            app:title="@string/app_name" />
+
+        <Preference
+            app:icon="@drawable/ic_outline_info_24"
+            app:key="version"
+            app:persistent="false"
+            app:selectable="false"
+            app:summary=""
+            app:title="@string/app_version" />
+
+        <Preference
+            app:icon="@drawable/ic_github_brands"
+            app:key="github"
+            app:summary="@string/github_summary"
+            app:title="@string/github" />
+    </PreferenceCategory>
+</PreferenceScreen>

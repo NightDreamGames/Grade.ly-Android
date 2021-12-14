@@ -1,0 +1,44 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Grade.ly" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue_grey_900</item>
+        <item name="colorPrimaryVariant">@color/blue_grey_900</item>
+        <item name="colorOnPrimary">@color/grey_50</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue_300</item>
+        <item name="colorSecondaryVariant">@color/blue_300</item>
+        <item name="colorOnSecondary">@color/grey_50</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">#19222d</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="backgroundColor">@color/blue_grey_950</item>
+        <item name="android:selectableItemBackground">@color/blue_grey_950</item>
+        <item name="android:navigationBarColor">@color/blue_grey_950</item>
+        <item name="colorOnBackground">@color/grey_200</item>
+        <item name="android:textColor">@color/grey_200</item>
+        <item name="dividerColor">@color/blue_grey_900</item>
+        <item name="dividerColorDark">@color/grey_600</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+    </style>
+
+    <style name="Theme.Grade.ly.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Grade.ly.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <style name="Theme.Grade.ly.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Dark" />
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="buttonBarNegativeButtonStyle">@style/ButtonStyle</item>
+        <item name="android:background">@color/blue_grey_950</item>
+        <item name="buttonBarPositiveButtonStyle">@style/ButtonStyle</item>
+    </style>
+
+    <style name="ButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/grey_200</item>
+    </style>
+</resources>

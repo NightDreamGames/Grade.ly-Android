@@ -1,0 +1,78 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.NightDreamGames.Grade.ly.Activities.MainActivity">
+
+    <item
+        android:id="@+id/period_selector"
+        android:orderInCategory="100"
+        android:title="@string/select_period"
+        app:showAsAction="never">
+        <menu>
+            <!-- Semester -->
+            <item
+                android:id="@+id/semester_1"
+                android:orderInCategory="100"
+                android:title="@string/semester_1"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/semester_2"
+                android:orderInCategory="100"
+                android:title="@string/semester_2"
+                app:showAsAction="never" />
+
+            <!-- Trimester -->
+            <item
+                android:id="@+id/trimester_1"
+                android:orderInCategory="100"
+                android:title="@string/trimester_1"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/trimester_2"
+                android:orderInCategory="100"
+                android:title="@string/trimester_2"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/trimester_3"
+                android:orderInCategory="100"
+                android:title="@string/trimester_3"
+                app:showAsAction="never" />
+
+            <!-- Year -->
+            <item
+                android:id="@+id/year"
+                android:orderInCategory="100"
+                android:title="@string/year"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/sort_by"
+        android:orderInCategory="100"
+        android:title="@string/sort_by"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/sort_az"
+                android:orderInCategory="100"
+                android:title="@string/az"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/sort_mark"
+                android:orderInCategory="100"
+                android:title="@string/marks"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/settings"
+        app:showAsAction="never" />
+</menu>
