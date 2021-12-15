@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="mark">Note</string>
-    <string name="subject">Kurs</string>
+    <string name="subject">Fach</string>
     <string name="test">Prüfung</string>
     <string name="average">Durchschnitt</string>
     <string name="previous">Zurück</string>

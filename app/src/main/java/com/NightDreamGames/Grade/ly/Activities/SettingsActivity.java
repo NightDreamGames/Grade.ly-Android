@@ -29,6 +29,8 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(R.string.settings);
+        String a = getString(R.string.settings);
 
         com.NightDreamGames.Grade.ly.databinding.SettingsActivityBinding binding = SettingsActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
