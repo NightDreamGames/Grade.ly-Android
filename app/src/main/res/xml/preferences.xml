@@ -97,5 +97,11 @@
             app:key="github"
             app:summary="@string/github_summary"
             app:title="@string/github" />
+
+        <Preference
+            app:icon="@drawable/ic_outline_feedback_24"
+            app:key="contact"
+            app:summary="@string/email"
+            app:title="@string/contact" />
     </PreferenceCategory>
 </PreferenceScreen>

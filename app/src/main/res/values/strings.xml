@@ -88,4 +88,6 @@
     <string name="luxemburgish" translatable="false">Lëtzebuergesch</string>
     <string name="language">Language</string>
     <string name="defautl">Default</string>
+    <string name="email" translatable="false">contact.nightdreamgames@gmail.com</string>
+    <string name="contact">Contact us</string>
 </resources>

@@ -68,26 +68,37 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             //TODO add ripple effect
             setPreferencesFromResource(R.xml.preferences, rootKey);
-            androidx.preference.EditTextPreference etp = findPreference("custom_mark");
-            androidx.preference.Preference es = findPreference("edit_subjects");
-            androidx.preference.Preference version = findPreference("version");
-            androidx.preference.Preference dark = findPreference("dark_theme");
-            androidx.preference.Preference reset = findPreference("reset");
-            androidx.preference.Preference github = findPreference("github");
-            androidx.preference.Preference language = findPreference("language");
 
-            etp.setVisible(Manager.getPreference("total_marks", "60").equals("-1"));
+            androidx.preference.Preference es = findPreference("edit_subjects");
+            androidx.preference.Preference tmark = findPreference("total_marks");
+            androidx.preference.EditTextPreference cmark = findPreference("custom_mark");
+            androidx.preference.Preference reset = findPreference("reset");
+            androidx.preference.Preference dark = findPreference("dark_theme");
+            androidx.preference.Preference language = findPreference("language");
+            androidx.preference.Preference version = findPreference("version");
+            androidx.preference.Preference github = findPreference("github");
+            androidx.preference.Preference contact = findPreference("contact");
+
             es.setOnPreferenceClickListener(preference -> {
                 Intent intent = new Intent(getContext(), CreatorActivity.class);
                 startActivity(intent);
                 getActivity().overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
                 return true;
             });
-            try {
-                version.setSummary(getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0).versionName);
-            } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
-            }
+
+            tmark.setOnPreferenceChangeListener((preference, newValue) -> {
+                cmark.setVisible(newValue.equals("-1"));
+                return true;
+            });
+            cmark.setOnBindEditTextListener(editText -> {
+                editText.setInputType(InputType.TYPE_CLASS_NUMBER);
+                editText.selectAll();
+                int maxLength = 6;
+                editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+            });
+            cmark.setVisible(Manager.getPreference("total_marks", "60").equals("-1"));
+
+            reset.setOnPreferenceClickListener(preference -> confirmChange());
 
             dark.setOnPreferenceChangeListener((preference, newVal) -> {
                 final String value = (String) newVal;
@@ -110,26 +121,30 @@ public class SettingsActivity extends AppCompatActivity {
                 return true;
             });
 
-            findPreference("total_marks").setOnPreferenceChangeListener((preference, newValue) -> {
-                etp.setVisible(newValue.equals("-1"));
+            language.setOnPreferenceChangeListener((preference, newValue) -> {
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
                 return true;
             });
-            etp.setOnBindEditTextListener(editText -> {
-                editText.setInputType(InputType.TYPE_CLASS_NUMBER);
-                editText.selectAll();
-                int maxLength = 6;
-                editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
-            });
 
-            reset.setOnPreferenceClickListener(preference -> confirmChange());
+
+            try {
+                version.setSummary(getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0).versionName);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+
             github.setOnPreferenceClickListener(preference -> {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/NightDreamGames/Grade.ly"));
                 startActivity(browserIntent);
                 return true;
             });
 
-            language.setOnPreferenceChangeListener((preference, newValue) -> {
-                Intent intent = new Intent(getContext(), MainActivity.class);
+            contact.setOnPreferenceClickListener(preference -> {
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+                intent.putExtra(Intent.EXTRA_EMAIL, "contact.nightdreamgames@gmail.com");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Grade.ly feedback");
                 startActivity(intent);
                 return true;
             });
