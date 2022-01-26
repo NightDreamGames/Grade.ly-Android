@@ -61,6 +61,6 @@
     <string name="reset_summary">Alle gespeicherten Noten löschen und App zurücksetzen</string>
     <string name="github">GitHub Repository</string>
     <string name="language">Sprache</string>
-    <string name="defautl">Default</string>
+    <string name="default_string">Default</string>
     <string name="contact">Kontakt</string>
 </resources>

@@ -61,6 +61,6 @@
     <string name="reset_summary">All gespäichert Notten läschen an d\'App zeréckzesetzen</string>
     <string name="github">GitHub Repository</string>
     <string name="language">Sprooch</string>
-    <string name="defautl">Default</string>
+    <string name="default_string">Default</string>
     <string name="contact">Kontakt</string>
 </resources>

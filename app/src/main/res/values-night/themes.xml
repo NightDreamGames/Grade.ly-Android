@@ -18,7 +18,7 @@
         <item name="android:navigationBarColor">@color/blue_grey_950</item>
         <item name="colorOnBackground">@color/grey_200</item>
         <item name="android:textColor">@color/grey_200</item>
-        <item name="dividerColor">@color/blue_grey_900</item>
+        <item name="listDividerColor">@color/blue_grey_900</item>
         <item name="dividerColorDark">@color/grey_600</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
     </style>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="dividerColor" format="reference" />
+    <attr name="listDividerColor" format="reference" />
     <attr name="dividerColorDark" format="reference" />
     <attr name="iconColor" format="reference" />
 </resources>

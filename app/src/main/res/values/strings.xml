@@ -87,7 +87,22 @@
     <string name="french" translatable="false">Français</string>
     <string name="luxemburgish" translatable="false">Lëtzebuergesch</string>
     <string name="language">Language</string>
-    <string name="defautl">Default</string>
+    <string name="default_string">Default</string>
     <string name="email" translatable="false">contact.nightdreamgames@gmail.com</string>
     <string name="contact">Contact us</string>
+    <string name="setup">Setup</string>
+    <string name="other_system">Other school system</string>
+    <string name="lux_system">Luxemburgish school system</string>
+    <string name="school_system">School system</string>
+    <string name="class_string">Class</string>
+    <string name="chinese">Chinese</string>
+    <string name="latin">Latin</string>
+    <string name="basic">Basic</string>
+    <string name="variant">Variant</string>
+
+    <!-- Preference Titles -->
+
+    <!-- Messages Preferences -->
+
+    <!-- Sync Preferences -->
 </resources>

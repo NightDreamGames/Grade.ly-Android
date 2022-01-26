@@ -52,7 +52,6 @@
         <Preference
             app:icon="@drawable/ic_baseline_clear_all_24"
             app:key="reset"
-            app:summary="@string/reset_summary"
             app:title="@string/reset" />
     </PreferenceCategory>
 

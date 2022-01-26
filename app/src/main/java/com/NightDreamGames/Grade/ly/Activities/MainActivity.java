@@ -61,7 +61,10 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
         adaptView();
 
         if (Boolean.parseBoolean(Manager.getPreference("isFirstRun", "true")))
-            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+            startActivity(new Intent(MainActivity.this, SetupActivity.class));
+
+        //TODO Comment this out
+        //Manager.deletePreference("isFirstRun");
     }
 
     @Override
@@ -242,6 +245,7 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
         return context.createConfigurationContext(configuration);
     }
 
+    @SuppressWarnings("deprecation")
     private Context updateResourcesLocaleLegacy(Context context, Locale locale) {
         Resources resources = context.getResources();
         Configuration configuration = resources.getConfiguration();

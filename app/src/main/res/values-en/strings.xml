@@ -23,7 +23,7 @@
     <string name="rating_system">Rating system</string>
     <string name="open">Open</string>
     <string name="select_period">Select period</string>
-    <string name="period">Period</string>
+    <string name="period">Term</string>
     <string name="custom">Custom</string>
     <string name="up">Up</string>
     <string name="down">Down</string>
@@ -61,6 +61,15 @@
     <string name="reset_summary">Delete all saved marks and reset app</string>
     <string name="github">GitHub repository</string>
     <string name="language">Language</string>
-    <string name="defautl">Default</string>
+    <string name="default_string">Default</string>
     <string name="contact">Contact us</string>
+    <string name="variant">Variant</string>
+    <string name="basic">Basic</string>
+    <string name="latin">Latin</string>
+    <string name="chinese">Chinese</string>
+    <string name="class_string">Class</string>
+    <string name="school_system">School system</string>
+    <string name="lux_system">Luxemburgish school system</string>
+    <string name="other_system">Other school system</string>
+    <string name="setup">Setup</string>
 </resources>

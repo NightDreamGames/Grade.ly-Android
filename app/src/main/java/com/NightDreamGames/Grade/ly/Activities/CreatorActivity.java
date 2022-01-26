@@ -146,6 +146,10 @@ public class CreatorActivity extends AppCompatActivity implements CustomRecycler
             return true;
         } else if (itemId == R.id.delete) {
             Manager.periodTemplate.remove(subjectPosition);
+
+            for (Period p : Manager.getCurrentYear().periods)
+                p.subjects.remove(subjectPosition);
+
             updateView();
             return true;
         }

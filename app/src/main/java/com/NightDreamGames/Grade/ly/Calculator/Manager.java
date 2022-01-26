@@ -9,7 +9,6 @@ import com.NightDreamGames.Grade.ly.Misc.Serialization;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Locale;
 
 public class Manager {
@@ -51,9 +50,13 @@ public class Manager {
     }
 
     public static void writePreference(String key, String data) {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(MainActivity.sApplication);
-        SharedPreferences.Editor editor = sharedPref.edit();
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.sApplication).edit();
         editor.putString(key, data);
+        editor.apply();
+    }
+
+    public static void deletePreference(String key) {
+        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.sApplication).edit().remove(key);
         editor.apply();
     }
 
@@ -124,10 +127,10 @@ public class Manager {
 
         switch (Integer.parseInt(Manager.getPreference("sort_mode", "0"))) {
             case 0:
-                Collections.sort(periodTemplate, (o1, o2) -> Normalizer.normalize(o1.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").compareTo(Normalizer.normalize(o2.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "")));
+                periodTemplate.sort((o1, o2) -> Normalizer.normalize(o1.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").compareTo(Normalizer.normalize(o2.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "")));
                 break;
             case 1:
-                Collections.sort(periodTemplate, (o1, o2) -> Double.compare(o2.coefficient, o1.coefficient));
+                periodTemplate.sort((o1, o2) -> Double.compare(o2.coefficient, o1.coefficient));
                 break;
         }
 

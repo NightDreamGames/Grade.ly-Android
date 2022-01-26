@@ -1,4 +1,14 @@
 <resources>
+    <!-- School System -->
+    <string-array name="system_entries">
+        <item>@string/lux_system</item>
+        <item>@string/other_system</item>
+    </string-array>
+    <string-array name="system_values">
+        <item>"lux"</item>
+        <item>"other"</item>
+    </string-array>
+
     <!-- Period Preference -->
     <string-array name="period_entries">
         <item>@string/trimesters</item>
@@ -67,7 +77,7 @@
 
     <!-- Language Preference -->
     <string-array name="language">
-        <item>@string/defautl</item>
+        <item>@string/default_string</item>
         <item>@string/english</item>
         <item>@string/german</item>
         <item>@string/french</item>
@@ -79,5 +89,17 @@
         <item>"de"</item>
         <item>"fr"</item>
         <item>"lb"</item>
+    </string-array>
+
+    <!-- Variant -->
+    <string-array name="variant_entries">
+        <item>@string/basic</item>
+        <item>@string/latin</item>
+        <item>@string/chinese</item>
+    </string-array>
+    <string-array name="variant_values">
+        <item>"basic"</item>
+        <item>"latin"</item>
+        <item>"chinese"</item>
     </string-array>
 </resources>

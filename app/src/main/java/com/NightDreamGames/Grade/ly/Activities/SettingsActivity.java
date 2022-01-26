@@ -12,6 +12,7 @@ import android.os.Message;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +31,6 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(R.string.settings);
-        String a = getString(R.string.settings);
 
         com.NightDreamGames.Grade.ly.databinding.SettingsActivityBinding binding = SettingsActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -42,9 +42,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
-        if (Boolean.parseBoolean(Manager.getPreference("isFirstRun", "true")))
-            Manager.writePreference("isFirstRun", "false");
+        binding.fab.setVisibility(View.GONE);
     }
 
     @Override
@@ -72,8 +70,8 @@ public class SettingsActivity extends AppCompatActivity {
             setPreferencesFromResource(R.xml.preferences, rootKey);
 
             androidx.preference.Preference es = findPreference("edit_subjects");
-            androidx.preference.Preference tmark = findPreference("total_marks");
-            androidx.preference.EditTextPreference cmark = findPreference("custom_mark");
+            androidx.preference.Preference tMark = findPreference("total_marks");
+            androidx.preference.EditTextPreference cMark = findPreference("custom_mark");
             androidx.preference.Preference reset = findPreference("reset");
             androidx.preference.Preference dark = findPreference("dark_theme");
             androidx.preference.Preference language = findPreference("language");
@@ -88,17 +86,17 @@ public class SettingsActivity extends AppCompatActivity {
                 return true;
             });
 
-            tmark.setOnPreferenceChangeListener((preference, newValue) -> {
-                cmark.setVisible(newValue.equals("-1"));
+            tMark.setOnPreferenceChangeListener((preference, newValue) -> {
+                cMark.setVisible(newValue.equals("-1"));
                 return true;
             });
-            cmark.setOnBindEditTextListener(editText -> {
+            cMark.setOnBindEditTextListener(editText -> {
                 editText.setInputType(InputType.TYPE_CLASS_NUMBER);
                 editText.selectAll();
                 int maxLength = 6;
                 editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
             });
-            cmark.setVisible(Manager.getPreference("total_marks", "60").equals("-1"));
+            cMark.setVisible(Manager.getPreference("total_marks", "60").equals("-1"));
 
             reset.setOnPreferenceClickListener(preference -> confirmChange());
 

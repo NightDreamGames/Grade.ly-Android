@@ -1,0 +1,82 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ListPreference
+        app:entries="@array/system_entries"
+        app:entryValues="@array/system_values"
+        app:icon="@drawable/ic_baseline_school_24"
+        app:key="school_system"
+        app:title="@string/school_system"
+        app:useSimpleSummaryProvider="true" />
+
+    <PreferenceCategory
+        android:key="lux_system"
+        android:title="@string/lux_system">
+        <ListPreference
+            app:icon="@drawable/ic_baseline_school_24"
+            app:key="class"
+            app:title="@string/class_string"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="basic"
+            app:entries="@array/variant_entries"
+            app:entryValues="@array/variant_values"
+
+            app:key="variant"
+            app:title="@string/variant"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="other_system"
+        android:title="@string/other_system">
+        <Preference
+            app:icon="@drawable/ic_baseline_school_24"
+            app:key="edit_subjects"
+            app:summary="@string/edit_subjects_summary"
+            app:title="@string/edit_subjects" />
+
+        <ListPreference
+            app:defaultValue="period_trimester"
+            app:entries="@array/period_entries"
+            app:entryValues="@array/period_values"
+            app:icon="@drawable/ic_outline_access_time_24"
+            app:key="period"
+            app:title="@string/period"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="60"
+            app:entries="@array/mark_entries"
+            app:entryValues="@array/mark_values"
+            app:icon="@drawable/ic_file_regular"
+            app:key="total_marks"
+            app:title="@string/rating_system"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:defaultValue="60"
+            app:dialogTitle="@string/custom_rating_system"
+            app:key="custom_mark"
+            app:title="@string/custom_rating_system"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="rounding_up"
+            app:entries="@array/rounding_mode_entries"
+            app:entryValues="@array/rounding_mode_values"
+            app:icon="@drawable/ic_arrows_alt_v_solid"
+            app:key="rounding_mode"
+            app:title="@string/rounding_mode"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="1"
+            app:entries="@array/round_to_entries"
+            app:entryValues="@array/round_to_values"
+            app:icon="@drawable/ic_baseline_content_cut_24"
+            app:key="round_to"
+            app:title="@string/round_to"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+</PreferenceScreen>
