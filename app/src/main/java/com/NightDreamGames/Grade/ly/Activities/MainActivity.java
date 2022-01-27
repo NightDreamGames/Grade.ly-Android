@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
             startActivity(new Intent(MainActivity.this, SetupActivity.class));
 
         //TODO Comment this out
-        //Manager.deletePreference("isFirstRun");
+        Manager.deletePreference("isFirstRun");
     }
 
     @Override

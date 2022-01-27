@@ -7,13 +7,13 @@
             app:title="@string/edit_subjects" />
 
         <ListPreference
-            app:defaultValue="period_trimester"
+            app:defaultValue="period_semester"
             app:entries="@array/period_entries"
             app:entryValues="@array/period_values"
             app:icon="@drawable/ic_outline_access_time_24"
             app:key="period"
             app:title="@string/period"
-            app:useSimpleSummaryProvider="true" />vi
+            app:useSimpleSummaryProvider="true" />
 
         <ListPreference
             app:defaultValue="60"

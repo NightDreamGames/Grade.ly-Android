@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
@@ -19,12 +20,15 @@ import com.NightDreamGames.Grade.ly.databinding.SettingsActivityBinding;
 import java.io.IOException;
 
 public class SetupActivity extends AppCompatActivity {
+    private static SettingsActivityBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = SettingsActivityBinding.inflate(getLayoutInflater());
+
         setTitle(R.string.setup);
 
-        com.NightDreamGames.Grade.ly.databinding.SettingsActivityBinding binding = SettingsActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         getSupportFragmentManager()
@@ -33,13 +37,23 @@ public class SetupActivity extends AppCompatActivity {
                 .commit();
 
         setSupportActionBar(binding.toolbar);
+        binding.fab.setVisibility(View.INVISIBLE);
         binding.fab.setOnClickListener(view ->
         {
-            String variant = Manager.getPreference("variant", "basic");
-            ExcelParser.fillSubjects(Manager.getPreference("class", "7CI"), variant.equals("latin"), variant.equals("chinese"));
+            if (Manager.getPreference("school_system", "").equals("lux")) {
+                Manager.writePreference("period", "period_semester");
+                Manager.writePreference("total_marks", "60");
+                Manager.writePreference("rounding_mode", "rounding_up");
+                Manager.writePreference("round_to", "1");
+
+                String variant = Manager.getPreference("variant", "basic");
+                ExcelParser.fillSubjects(Manager.getPreference("class", "7CI"), variant.equals("latin"), variant.equals("chinese"));
+            }
             Manager.writePreference("isFirstRun", "false");
             startActivity(new Intent(SetupActivity.this, MainActivity.class));
         });
+
+        Manager.deletePreference("school_system");
     }
 
     @Override
@@ -81,9 +95,15 @@ public class SetupActivity extends AppCompatActivity {
                 if (newValue.equals("lux")) {
                     lux.setVisible(true);
                     other.setVisible(false);
+                    if (Manager.getPreference("class", "Not set").equals("Not set"))
+                        binding.fab.setVisibility(View.INVISIBLE);
+                    else
+                        binding.fab.setVisibility(View.VISIBLE);
+
                 } else {
                     lux.setVisible(false);
                     other.setVisible(true);
+                    binding.fab.setVisibility(View.VISIBLE);
                 }
 
                 return true;
@@ -97,6 +117,7 @@ public class SetupActivity extends AppCompatActivity {
             }
             classPreference.setOnPreferenceChangeListener((preference, newValue) -> {
                 variant.setVisible(!newValue.equals("7C"));
+                binding.fab.setVisibility(View.VISIBLE);
                 return true;
             });
 
