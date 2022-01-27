@@ -53,7 +53,7 @@ public class TestDialogManager extends DialogFragment {
             listener = (TestDialogListener) context;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(this.toString() + " must implement TestDialogListener");
+            throw new ClassCastException(this + " must implement TestDialogListener");
         }
     }
 

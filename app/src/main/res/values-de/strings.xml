@@ -63,4 +63,13 @@
     <string name="language">Sprache</string>
     <string name="default_string">Default</string>
     <string name="contact">Kontakt</string>
+    <string name="setup">Einrichtung</string>
+    <string name="other_system">Anderes Schulsystem</string>
+    <string name="lux_system">Luxemburgisches Schulsystem</string>
+    <string name="school_system">Schulsystem</string>
+    <string name="class_string">Klasse</string>
+    <string name="latin">Lateinisch</string>
+    <string name="chinese">Chinesisch</string>
+    <string name="basic">Basic</string>
+    <string name="variant">Variante</string>
 </resources>

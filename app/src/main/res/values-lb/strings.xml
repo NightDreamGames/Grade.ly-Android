@@ -63,4 +63,13 @@
     <string name="language">Sprooch</string>
     <string name="default_string">Default</string>
     <string name="contact">Kontakt</string>
+    <string name="setup">Ariichtung</string>
+    <string name="other_system">Aneren Schoulsystem</string>
+    <string name="lux_system">Lëtzebuergeschen Schoulsystem</string>
+    <string name="school_system">Schoulsystem</string>
+    <string name="class_string">Klass</string>
+    <string name="latin">Latäin</string>
+    <string name="chinese">Chineesesch</string>
+    <string name="basic">Basic</string>
+    <string name="variant">Variante</string>
 </resources>

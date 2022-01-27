@@ -47,7 +47,7 @@ public class SubjectDialogManager extends DialogFragment {
             listener = (SubjectDialogListener) context;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(this.toString() + " must implement TestDialogListener");
+            throw new ClassCastException(this + " must implement TestDialogListener");
         }
     }
 
