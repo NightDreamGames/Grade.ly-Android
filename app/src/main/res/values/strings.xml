@@ -99,6 +99,8 @@
     <string name="latin">Latin</string>
     <string name="basic">Basic</string>
     <string name="variant">Variant</string>
+    <string name="note">Note:</string>
+    <string name="note_text">You can always edit your subjects in the settings later</string>
 
     <!-- Preference Titles -->
 

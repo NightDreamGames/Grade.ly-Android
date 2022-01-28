@@ -72,4 +72,6 @@
     <string name="chinese">Chinesisch</string>
     <string name="basic">Basic</string>
     <string name="variant">Variante</string>
+    <string name="note">Anmerkung:</string>
+    <string name="note_text">Sie können Ihre Fächer später immer noch in den Einstellungen bearbeiten</string>
 </resources>

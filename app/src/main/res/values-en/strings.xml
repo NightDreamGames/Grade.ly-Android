@@ -72,4 +72,6 @@
     <string name="lux_system">Luxemburgish school system</string>
     <string name="other_system">Other school system</string>
     <string name="setup">Setup</string>
+    <string name="note">Note:</string>
+    <string name="note_text">You can always edit your subjects in the settings later</string>
 </resources>

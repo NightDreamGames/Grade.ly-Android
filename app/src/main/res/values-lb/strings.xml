@@ -72,4 +72,6 @@
     <string name="chinese">Chineesesch</string>
     <string name="basic">Basic</string>
     <string name="variant">Variante</string>
+    <string name="note">Umierkung:</string>
+    <string name="note_text">Dir kënnt är Fächer spéider ëmmer nach an den Astellungen beaarbechten</string>
 </resources>

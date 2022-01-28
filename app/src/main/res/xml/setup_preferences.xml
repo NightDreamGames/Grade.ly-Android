@@ -25,6 +25,13 @@
             app:key="variant"
             app:title="@string/variant"
             app:useSimpleSummaryProvider="true" />
+
+        <Preference
+            app:allowDividerAbove="true"
+            app:persistent="false"
+            app:selectable="false"
+            app:summary="@string/note_text"
+            app:title="@string/note" />
     </PreferenceCategory>
 
     <PreferenceCategory
