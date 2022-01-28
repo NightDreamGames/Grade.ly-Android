@@ -9,6 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
         android:theme="@style/Theme.Grade.ly">
 
         <activity

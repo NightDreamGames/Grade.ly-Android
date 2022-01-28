@@ -60,8 +60,10 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
 
         adaptView();
 
-        if (Boolean.parseBoolean(Manager.getPreference("isFirstRun", "true")))
+        if (Boolean.parseBoolean(Manager.getPreference("isFirstRun", "true"))) {
             startActivity(new Intent(MainActivity.this, SetupActivity.class));
+            finish();
+        }
 
         //Manager.deletePreference("isFirstRun");
     }

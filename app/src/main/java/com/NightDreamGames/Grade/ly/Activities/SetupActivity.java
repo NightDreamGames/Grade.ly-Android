@@ -51,6 +51,7 @@ public class SetupActivity extends AppCompatActivity {
             }
             Manager.writePreference("isFirstRun", "false");
             startActivity(new Intent(SetupActivity.this, MainActivity.class));
+            finish();
         });
 
         Manager.deletePreference("school_system");
@@ -117,6 +118,13 @@ public class SetupActivity extends AppCompatActivity {
             }
             classPreference.setOnPreferenceChangeListener((preference, newValue) -> {
                 variant.setVisible(!newValue.equals("7C"));
+                if (newValue.toString().startsWith("1C")) {
+                    variant.setEntries(R.array.variant_entries_short);
+                    variant.setEntryValues(R.array.variant_values_short);
+                } else {
+                    variant.setEntries(R.array.variant_entries);
+                    variant.setEntryValues(R.array.variant_values);
+                }
                 binding.fab.setVisibility(View.VISIBLE);
                 return true;
             });

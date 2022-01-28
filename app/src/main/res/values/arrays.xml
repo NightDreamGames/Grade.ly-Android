@@ -102,4 +102,14 @@
         <item>"latin"</item>
         <item>"chinese"</item>
     </string-array>
+
+    <!-- Variant short -->
+    <string-array name="variant_entries_short">
+        <item>@string/basic</item>
+        <item>@string/latin</item>
+    </string-array>
+    <string-array name="variant_values_short">
+        <item>"basic"</item>
+        <item>"latin"</item>
+    </string-array>
 </resources>
