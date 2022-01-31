@@ -55,7 +55,7 @@
     <string name="to_100th">To 100-th</string>
 
     <string name="about">About</string>
-    <string name="about_text" translatable="false">NightDream Games - FauconSpartiate</string>
+    <string name="about_text" translatable="false">NightDream Games - FauconSpartiate\nVisual identity - Ellia Walrave\nTesting - AigleSpartiate</string>
 
     <string name="licenses">Licenses</string>
     <string name="edit_subjects">Edit subjects</string>
