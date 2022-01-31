@@ -12,7 +12,7 @@
         android:key="lux_system"
         android:title="@string/lux_system">
         <ListPreference
-            app:icon="@drawable/ic_baseline_school_24"
+            app:icon="@drawable/ic_outline_class_24"
             app:key="class"
             app:title="@string/class_string"
             app:useSimpleSummaryProvider="true" />

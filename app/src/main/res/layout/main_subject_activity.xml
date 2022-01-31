@@ -98,6 +98,8 @@
                         android:layout_marginStart="8dp"
                         android:padding="0dp"
                         android:text="@string/plus"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/button"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -131,6 +133,8 @@
                         android:layout_marginStart="16dp"
                         android:padding="0dp"
                         android:text="@string/minus"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/bonusText"
                         app:layout_constraintTop_toTopOf="parent" />

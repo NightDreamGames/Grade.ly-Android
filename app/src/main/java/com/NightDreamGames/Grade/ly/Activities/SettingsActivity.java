@@ -145,7 +145,9 @@ public class SettingsActivity extends AppCompatActivity {
                 intent.setData(Uri.parse("mailto:")); // only email apps should handle this
                 intent.putExtra(Intent.EXTRA_EMAIL, "contact.nightdreamgames@gmail.com");
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Grade.ly feedback");
+                //if (intent.resolveActivity(MainActivity.sApplication.getPackageManager()) != null) {
                 startActivity(intent);
+                //}
                 return true;
             });
 
