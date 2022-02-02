@@ -1,11 +1,15 @@
 <div align='center'>
+  <a href="https://play.google.com/store/apps/details?id=com.NightDreamGames.Grade.ly">
 <img src="https://user-images.githubusercontent.com/49079695/152243403-eea6e8c0-30c3-48c2-8866-3e576ba2bf63.png" width="512" />
+    </a>
 </div>
 
 <br />
 
 <div align='center'>
+    <a href="https://play.google.com/store/apps/details?id=com.NightDreamGames.Grade.ly">
 <img src='https://img.shields.io/badge/VERSION-1.0.1-%2523FDD835'>
+          </a>
 </div>
 
 <br />
@@ -20,7 +24,7 @@ A clean and open-source app to track and manage your school grades.
   
 ### Quick Links
   
-<a href='https://nightdreamgames.github.io/#'>
+<a href='https://nightdreamgames.github.io'>
   
 <img src='https://img.shields.io/badge/HOMEPAGE-gray?style=for-the-badge'>
   
