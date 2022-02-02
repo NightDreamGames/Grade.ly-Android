@@ -26,7 +26,7 @@ public class ExcelParser {
         // initialize asset manager
         AssetManager assetManager = MainActivity.sApplication.getAssets();
         //  open excel file name as Classes.xlsx
-        myInput = assetManager.open("Classes.xls");
+        myInput = assetManager.open("Classique.xls");
         // Create a POI File System object
         POIFSFileSystem myFileSystem = new POIFSFileSystem(myInput);
 

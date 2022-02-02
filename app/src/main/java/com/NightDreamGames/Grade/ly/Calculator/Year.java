@@ -35,13 +35,11 @@ public class Year implements Serializable {
             return;
         }
 
-        for (Period s : periods) {
-            s.calculate();
-        }
-
         double a = 0;
         double b = 0;
         for (Period s : periods) {
+            s.calculate();
+
             if (s.result != -1) {
                 a += s.result;
                 b++;

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
     protected static final String EXTRA_MESSAGE = "com.NightDreamGames.Grade.ly.SUBJECT";
     public static Application sApplication;
     private MainSubjectActivityBinding binding;
+    public static String sDefSystemLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -227,7 +229,11 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
     }
 
     private Context updateBaseContextLocale(Context context) {
-        String language = String.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString("language", "en"));
+        sDefSystemLanguage = Locale.getDefault().getLanguage();
+
+        String language = String.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString("language", "default"));
+        if (language.equals("default"))
+            language = sDefSystemLanguage;
 
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
@@ -237,6 +243,13 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
         }
 
         return updateResourcesLocaleLegacy(context, locale);
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        sDefSystemLanguage = newConfig.locale.getLanguage();
     }
 
     @TargetApi(Build.VERSION_CODES.N)

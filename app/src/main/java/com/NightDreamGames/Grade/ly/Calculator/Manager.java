@@ -101,6 +101,14 @@ public class Manager {
 
             for (Period per : getCurrentYear().periods) {
                 for (int j = 0; j < per.subjects.size(); j++) {
+                    String name;
+                    if (Manager.getPreference("period", "period_trimester").equals("period_trimester"))
+                        name = MainActivity.sApplication.getString(MainActivity.sApplication.getResources().getIdentifier("trimester_" + (j + 1), "string", MainActivity.sApplication.getPackageName()));
+                    else
+                        name = MainActivity.sApplication.getString(MainActivity.sApplication.getResources().getIdentifier("semester_" + (j + 1), "string", MainActivity.sApplication.getPackageName()));
+
+                    p.subjects.get(j).addTest(new Test(per.subjects.get(j).result, totalMarks, name));
+
                     for (int k = 0; k < per.subjects.get(j).tests.size(); k++) {
                         p.subjects.get(j).addTest(per.subjects.get(j).tests.get(k));
                     }
@@ -111,7 +119,7 @@ public class Manager {
             return p;
         }
 
-        return years.get(currentYear).periods.get(currentPeriod);
+        return getCurrentYear().periods.get(currentPeriod);
     }
 
     @SuppressWarnings("ComparatorCombinators")

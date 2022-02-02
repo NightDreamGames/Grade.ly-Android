@@ -61,6 +61,7 @@
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/add"
         app:backgroundTint="?attr/colorSecondary"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         app:srcCompat="@drawable/ic_baseline_add_24"
         tools:layout_editor_absoluteX="320dp"
         tools:layout_editor_absoluteY="573dp" />
