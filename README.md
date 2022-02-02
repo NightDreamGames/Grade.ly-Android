@@ -17,6 +17,7 @@ A clean and open-source app to track and manage your school grades.
 ---
 
 <div align='center'> 
+  
 ### Quick Links
   
 <a href='https://nightdreamgames.github.io/#'>
