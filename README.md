@@ -4,7 +4,7 @@
 </a>
 
 <br />
-  
+
 <br />
 
 <a href="https://play.google.com/store/apps/details?id=com.NightDreamGames.Grade.ly">
@@ -12,10 +12,10 @@
 </a>
 
 <br />
-  
+
 <br />
 
-A clean and open-source app to track and manage your school grades.  
+A clean and open-source app to track and manage your school grades.
 
 ---
 
