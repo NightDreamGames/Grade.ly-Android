@@ -21,15 +21,8 @@ public class Manager {
     public static void init() {
         readPreferences();
 
-        Serialization.Deserialize();
-
-        if (years == null || years.isEmpty()) {
-            years = new ArrayList<>();
-            years.add(new Year());
-        }
-        if (periodTemplate == null || periodTemplate.isEmpty()) {
-            periodTemplate = new ArrayList<>();
-        }
+        years = new ArrayList<>();
+        years.add(new Year());
 
         for (Year y : years) {
             y.calculate();
@@ -99,19 +92,16 @@ public class Manager {
         if (currentPeriod == -1) {
             Period p = new Period();
 
-            for (Period per : getCurrentYear().periods) {
-                for (int j = 0; j < per.subjects.size(); j++) {
-                    String name;
+            for (int i = 0; i < getCurrentYear().periods.size() - 1; i++) {
+                for (int j = 0; j < getCurrentYear().periods.get(i).subjects.size(); j++) {
+                    String name = "semester_" + (i + 1);
                     if (Manager.getPreference("period", "period_trimester").equals("period_trimester"))
-                        name = MainActivity.sApplication.getString(MainActivity.sApplication.getResources().getIdentifier("trimester_" + (j + 1), "string", MainActivity.sApplication.getPackageName()));
+                        name = MainActivity.sApplication.getString(MainActivity.sApplication.getResources().getIdentifier("trimester_" + (i + 1), "string", MainActivity.sApplication.getPackageName()));
                     else
-                        name = MainActivity.sApplication.getString(MainActivity.sApplication.getResources().getIdentifier("semester_" + (j + 1), "string", MainActivity.sApplication.getPackageName()));
+                        name = MainActivity.sApplication.getString(MainActivity.sApplication.getResources().getIdentifier("semester_" + (i + 1), "string", MainActivity.sApplication.getPackageName()));
 
-                    p.subjects.get(j).addTest(new Test(per.subjects.get(j).result, totalMarks, name));
-
-                    for (int k = 0; k < per.subjects.get(j).tests.size(); k++) {
-                        p.subjects.get(j).addTest(per.subjects.get(j).tests.get(k));
-                    }
+                    if (getCurrentYear().periods.get(i).subjects.get(j).result != -1)
+                        p.subjects.get(j).addTest(new Test(getCurrentYear().periods.get(i).subjects.get(j).result, totalMarks, name));
                 }
             }
 

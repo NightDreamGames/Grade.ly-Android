@@ -50,6 +50,7 @@ public class SetupActivity extends AppCompatActivity {
                 ExcelParser.fillSubjects(Manager.getPreference("class", "7CI"), variant.equals("latin"), variant.equals("chinese"));
             }
             Manager.writePreference("isFirstRun", "false");
+            Manager.writePreference("isFirstRunFinished", "true");
             startActivity(new Intent(SetupActivity.this, MainActivity.class));
             finish();
         });

@@ -23,20 +23,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Calculator.Period;
 import com.NightDreamGames.Grade.ly.Misc.CustomRecyclerViewAdapter;
+import com.NightDreamGames.Grade.ly.Misc.Serialization;
 import com.NightDreamGames.Grade.ly.R;
 import com.NightDreamGames.Grade.ly.databinding.MainSubjectActivityBinding;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements CustomRecyclerViewAdapter.ItemClickListener {
 
     protected static final String EXTRA_MESSAGE = "com.NightDreamGames.Grade.ly.SUBJECT";
     public static Application sApplication;
-    private MainSubjectActivityBinding binding;
     public static String sDefSystemLanguage;
+    private MainSubjectActivityBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         sApplication = getApplication();
 
         switch (Manager.getPreference("dark_theme", "auto")) {
@@ -55,24 +58,31 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
                 break;
         }
 
-        super.onCreate(savedInstanceState);
+        Manager.readPreferences();
 
-        if (Manager.years == null || Manager.years.isEmpty())
-            Manager.init();
+        if (Manager.periodTemplate == null)
+            Manager.periodTemplate = new ArrayList<>();
 
-        adaptView();
-
+        boolean a = !Boolean.parseBoolean(Manager.getPreference("isFirstRunFinished", "false"));
         if (Boolean.parseBoolean(Manager.getPreference("isFirstRun", "true"))) {
             startActivity(new Intent(MainActivity.this, SetupActivity.class));
             finish();
+            return;
+        } else if (!Boolean.parseBoolean(Manager.getPreference("isFirstRunFinished", "false"))) {
+            Serialization.Deserialize();
         }
 
-        //Manager.deletePreference("isFirstRun");
+        Manager.deletePreference("isFirstRunFinished");
+
+
+        if (Manager.years == null || Manager.years.isEmpty())
+            Manager.init();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
         adaptView();
         updateView();
     }

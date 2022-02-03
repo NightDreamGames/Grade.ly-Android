@@ -40,8 +40,6 @@ public class CreatorActivity extends AppCompatActivity implements CustomRecycler
 
         getSupportActionBar().setTitle(R.string.edit_subjects);
 
-        binding.fab.setOnClickListener(v -> showNoticeDialog(0));
-
         updateView();
     }
 
@@ -86,6 +84,8 @@ public class CreatorActivity extends AppCompatActivity implements CustomRecycler
         if (id == android.R.id.home) {
             finish();
             return true;
+        } else if (id == R.id.add) {
+            showNoticeDialog(0);
         } else if (id == R.id.sort_az) Manager.writePreference("sort_mode", "0");
         else if (id == R.id.sort_mark) Manager.writePreference("sort_mode", "1");
 
