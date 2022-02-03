@@ -1,6 +1,6 @@
 <div align='center'>
 <a href="https://play.google.com/store/apps/details?id=com.NightDreamGames.Grade.ly">
-<img src="https://user-images.githubusercontent.com/49079695/152243403-eea6e8c0-30c3-48c2-8866-3e576ba2bf63.png" width="750" />
+<img src="https://user-images.githubusercontent.com/49079695/152243403-eea6e8c0-30c3-48c2-8866-3e576ba2bf63.png" width="600" />
 </a>
 
 <br />
@@ -8,7 +8,7 @@
 <br />
 
 <a href="https://play.google.com/store/apps/details?id=com.NightDreamGames.Grade.ly">
-<img src='https://img.shields.io/badge/VERSION-1.0.1-%2523FDD835'>
+<img src='https://img.shields.io/badge/VERSION-1.0.2-%2523FDD835'>
 </a>
 
 <br />
@@ -18,7 +18,6 @@
 A clean and open-source app to track and manage your school grades.
 
 ---
-
 
 ### Quick Links
 
@@ -32,9 +31,9 @@ A clean and open-source app to track and manage your school grades.
 
 <br />
 
-<br />
-
-<a href='https://play.google.com/store/apps/details?id=com.NightDreamGames.Grade.ly&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' alt="Grade.ly" style="width: 250px; " width="250" /></a>
+<a href='https://play.google.com/store/apps/details?id=com.NightDreamGames.Grade.ly&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+<img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' alt="Grade.ly" style="width: 200; " width="200" />
+</a>
 </div>
 
 ---
@@ -92,6 +91,7 @@ If you have a contribution in mind, don't hesitate to contact us, so we can work
 
 # ⚠️ License
 
-Grade.ly is a free and open-source software licensed under the GNU General Public License v3.0.
+Grade.ly is a free and open-source software licensed under the MIT License. You can use it for
+whatever you want as long as you give appropriate copyright credit.
 
 ---
