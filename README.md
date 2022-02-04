@@ -8,7 +8,7 @@
 <br />
 
 <a href="https://play.google.com/store/apps/details?id=com.NightDreamGames.Grade.ly">
-<img src='https://img.shields.io/badge/VERSION-1.0.2-%2523FDD835'>
+<img src='https://img.shields.io/badge/VERSION-1.0.3-%2523FDD835'>
 </a>
 
 <br />

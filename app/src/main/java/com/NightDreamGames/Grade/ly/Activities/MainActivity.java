@@ -1,5 +1,6 @@
 package com.NightDreamGames.Grade.ly.Activities;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Calculator.Period;
+import com.NightDreamGames.Grade.ly.Misc.Compatibility;
 import com.NightDreamGames.Grade.ly.Misc.CustomRecyclerViewAdapter;
 import com.NightDreamGames.Grade.ly.Misc.Serialization;
 import com.NightDreamGames.Grade.ly.R;
@@ -64,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
         if (Boolean.parseBoolean(Manager.getPreference("isFirstRun", "true"))) {
             startActivity(new Intent(MainActivity.this, SetupActivity.class));
         }
+
+        Compatibility.init();
     }
 
     @Override
@@ -225,6 +229,7 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
         super.attachBaseContext(updateBaseContextLocale(base));
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     private Context updateBaseContextLocale(Context context) {
         sDefSystemLanguage = Locale.getDefault().getLanguage();
 

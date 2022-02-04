@@ -21,7 +21,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
-import com.NightDreamGames.Grade.ly.Calculator.Period;
+import com.NightDreamGames.Grade.ly.Misc.Compatibility;
 import com.NightDreamGames.Grade.ly.R;
 import com.NightDreamGames.Grade.ly.databinding.SettingsActivityBinding;
 
@@ -89,28 +89,7 @@ public class SettingsActivity extends AppCompatActivity {
             });
 
             period.setOnPreferenceChangeListener((preference, newValue) -> {
-                int k = 0;
-                switch ((String) newValue) {
-                    case "period_trimester":
-                        k = 3;
-                        break;
-                    case "period_semester":
-                        k = 2;
-                        break;
-                    case "period_year":
-                        k = 1;
-                        break;
-                }
-
-                while (Manager.getCurrentYear().periods.size() > k)
-                    Manager.getCurrentYear().periods.remove(Manager.getCurrentYear().periods.size() - 1);
-
-                while (Manager.getCurrentYear().periods.size() < k)
-                    Manager.getCurrentYear().periods.add(new Period());
-
-                Manager.currentPeriod = 0;
-                Manager.calculate();
-
+                Compatibility.periodCount((String) newValue);
                 return true;
             });
 
