@@ -27,7 +27,6 @@ import com.NightDreamGames.Grade.ly.Misc.Serialization;
 import com.NightDreamGames.Grade.ly.R;
 import com.NightDreamGames.Grade.ly.databinding.MainSubjectActivityBinding;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements CustomRecyclerViewAdapter.ItemClickListener {
@@ -58,25 +57,13 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
                 break;
         }
 
-        Manager.readPreferences();
+        Manager.init();
 
-        if (Manager.periodTemplate == null)
-            Manager.periodTemplate = new ArrayList<>();
+        Serialization.Deserialize();
 
-        boolean a = !Boolean.parseBoolean(Manager.getPreference("isFirstRunFinished", "false"));
         if (Boolean.parseBoolean(Manager.getPreference("isFirstRun", "true"))) {
             startActivity(new Intent(MainActivity.this, SetupActivity.class));
-            finish();
-            return;
-        } else if (!Boolean.parseBoolean(Manager.getPreference("isFirstRunFinished", "false"))) {
-            Serialization.Deserialize();
         }
-
-        Manager.deletePreference("isFirstRunFinished");
-
-
-        if (Manager.years == null || Manager.years.isEmpty())
-            Manager.init();
     }
 
     @Override

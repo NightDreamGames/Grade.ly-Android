@@ -19,12 +19,13 @@ public class Year implements Serializable {
                 break;
             case "period_year":
                 k = 1;
-                Manager.currentPeriod = 0;
                 break;
         }
         for (int i = 0; i < k; i++) {
             periods.add(new Period());
         }
+
+        Manager.currentPeriod = 0;
 
         calculate();
     }

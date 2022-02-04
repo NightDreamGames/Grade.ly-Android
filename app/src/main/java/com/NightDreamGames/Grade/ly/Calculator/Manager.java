@@ -14,7 +14,7 @@ import java.util.Locale;
 public class Manager {
     public static int totalMarks;
     public static ArrayList<Year> years;
-    public static ArrayList<Subject> periodTemplate = new ArrayList<>();
+    public static ArrayList<Subject> periodTemplate;
     public static int currentYear = 0;
     public static int currentPeriod = 0;
 
@@ -23,6 +23,8 @@ public class Manager {
 
         years = new ArrayList<>();
         years.add(new Year());
+
+        Manager.periodTemplate = new ArrayList<>();
 
         for (Year y : years) {
             y.calculate();
@@ -92,9 +94,9 @@ public class Manager {
         if (currentPeriod == -1) {
             Period p = new Period();
 
-            for (int i = 0; i < getCurrentYear().periods.size() - 1; i++) {
+            for (int i = 0; i < getCurrentYear().periods.size(); i++) {
                 for (int j = 0; j < getCurrentYear().periods.get(i).subjects.size(); j++) {
-                    String name = "semester_" + (i + 1);
+                    String name;
                     if (Manager.getPreference("period", "period_trimester").equals("period_trimester"))
                         name = MainActivity.sApplication.getString(MainActivity.sApplication.getResources().getIdentifier("trimester_" + (i + 1), "string", MainActivity.sApplication.getPackageName()));
                     else

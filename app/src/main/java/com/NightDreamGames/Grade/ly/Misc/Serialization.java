@@ -23,6 +23,7 @@ public class Serialization {
         if (PreferenceManager.getDefaultSharedPreferences(MainActivity.sApplication).contains("data")) {
             Manager.years = gson.fromJson(Manager.getPreference("data", ""), new TypeToken<ArrayList<Year>>() {
             }.getType());
+
             Manager.periodTemplate = gson.fromJson(Manager.getPreference("default_data", ""), new TypeToken<ArrayList<Subject>>() {
             }.getType());
         }

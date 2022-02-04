@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import com.NightDreamGames.Grade.ly.Activities.MainActivity;
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Calculator.Subject;
+import com.NightDreamGames.Grade.ly.Calculator.Year;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -55,14 +56,10 @@ public class ExcelParser {
 
     public static void fillSubjects(String className, boolean latin, boolean chinese) {
         Manager.periodTemplate.clear();
-        /*for (Period p : Manager.getCurrentYear().periods)
-            p.subjects.clear();*/
 
         int position = 4;
-        if (latin)
-            position = 6;
-        else if (chinese)
-            position = 8;
+        if (latin) position = 6;
+        else if (chinese) position = 8;
 
         HSSFSheet sheet = workBook.getSheet(className);
 
@@ -76,11 +73,10 @@ public class ExcelParser {
                 double coefficient = Double.parseDouble(row.getCell(position).toString());
 
                 Manager.periodTemplate.add(new Subject(name, coefficient));
-
-                /*for (Period p : Manager.getCurrentYear().periods) {
-                    p.subjects.add(new Subject(name, coefficient));
-                }*/
             }
         }
+
+        Manager.years.clear();
+        Manager.years.add(new Year());
     }
 }

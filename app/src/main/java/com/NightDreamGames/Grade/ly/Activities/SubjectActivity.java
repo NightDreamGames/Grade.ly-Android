@@ -153,12 +153,14 @@ public class SubjectActivity extends AppCompatActivity implements CustomRecycler
     }
 
     public void showPopup(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.test_menu, popup.getMenu());
-        popup.setOnMenuItemClickListener(this);
-        popup.setGravity(Gravity.END);
-        popup.show();
+        if (Manager.currentPeriod != -1) {
+            PopupMenu popup = new PopupMenu(this, v);
+            MenuInflater inflater = popup.getMenuInflater();
+            inflater.inflate(R.menu.test_menu, popup.getMenu());
+            popup.setOnMenuItemClickListener(this);
+            popup.setGravity(Gravity.END);
+            popup.show();
+        }
     }
 
     @Override
