@@ -33,9 +33,8 @@
     <style name="Theme.Grade.ly.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Dark" />
 
     <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
-        <item name="buttonBarNegativeButtonStyle">@style/ButtonStyle</item>
-        <item name="android:background">@color/blue_grey_950</item>
         <item name="buttonBarPositiveButtonStyle">@style/ButtonStyle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/ButtonStyle</item>
     </style>
 
     <style name="ButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">

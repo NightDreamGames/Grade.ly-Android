@@ -21,6 +21,7 @@ import com.NightDreamGames.Grade.ly.databinding.SettingsActivityBinding;
 import java.io.IOException;
 
 public class SetupActivity extends AppCompatActivity {
+    //TODO remove memory leak
     private static SettingsActivityBinding binding;
 
     @Override
@@ -71,7 +72,7 @@ public class SetupActivity extends AppCompatActivity {
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
-        SharedPreferences.OnSharedPreferenceChangeListener listener = (prefs, key) -> {
+        final SharedPreferences.OnSharedPreferenceChangeListener listener = (prefs, key) -> {
             Manager.interpretPreferences();
             Manager.calculate();
         };
