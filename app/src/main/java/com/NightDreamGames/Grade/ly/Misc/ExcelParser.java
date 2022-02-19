@@ -70,7 +70,11 @@ public class ExcelParser {
             HSSFRow row = (HSSFRow) rowIter.next();
             if (!row.getCell(position).toString().isEmpty()) {
                 String name = row.getCell(0).toString();
-                double coefficient = Double.parseDouble(row.getCell(position).toString());
+                String data = row.getCell(position).toString();
+                double coefficient = 1;
+
+                if (!data.isEmpty())
+                    coefficient = Double.parseDouble(data);
 
                 Manager.periodTemplate.add(new Subject(name, coefficient));
             }

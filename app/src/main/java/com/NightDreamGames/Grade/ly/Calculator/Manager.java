@@ -32,12 +32,16 @@ public class Manager {
     }
 
     public static void readPreferences() {
+        interpretPreferences();
+
+        currentPeriod = Integer.parseInt(getPreference("current_period", "0"));
+    }
+
+    public static void interpretPreferences() {
         if (!getPreference("total_marks", "60").equals("-1"))
             totalMarks = Integer.parseInt(getPreference("total_marks", "60"));
         else
             totalMarks = Integer.parseInt(getPreference("custom_mark", "60"));
-
-        currentPeriod = Integer.parseInt(getPreference("current_period", "0"));
     }
 
     public static String getPreference(String key, String fallback) {
@@ -125,7 +129,7 @@ public class Manager {
             }
         }
 
-        switch (Integer.parseInt(Manager.getPreference("sort_mode", "0"))) {
+        switch (Integer.parseInt(Manager.getPreference("sort_mode3", "0"))) {
             case 0:
                 periodTemplate.sort((o1, o2) -> Normalizer.normalize(o1.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").compareTo(Normalizer.normalize(o2.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "")));
                 break;

@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
 
-        sDefSystemLanguage = newConfig.locale.getLanguage();
+        sDefSystemLanguage = newConfig.getLocales().get(0).getLanguage();
     }
 
     @TargetApi(Build.VERSION_CODES.N)

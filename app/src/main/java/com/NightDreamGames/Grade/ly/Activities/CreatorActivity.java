@@ -86,8 +86,8 @@ public class CreatorActivity extends AppCompatActivity implements CustomRecycler
             return true;
         } else if (id == R.id.add) {
             showNoticeDialog(0);
-        } else if (id == R.id.sort_az) Manager.writePreference("sort_mode", "0");
-        else if (id == R.id.sort_mark) Manager.writePreference("sort_mode", "1");
+        } else if (id == R.id.sort_az) Manager.writePreference("sort_mode3", "0");
+        else if (id == R.id.sort_mark) Manager.writePreference("sort_mode3", "1");
 
         updateView();
         return true;

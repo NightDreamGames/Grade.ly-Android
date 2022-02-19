@@ -72,7 +72,7 @@ public class SetupActivity extends AppCompatActivity {
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
         SharedPreferences.OnSharedPreferenceChangeListener listener = (prefs, key) -> {
-            Manager.readPreferences();
+            Manager.interpretPreferences();
             Manager.calculate();
         };
 
