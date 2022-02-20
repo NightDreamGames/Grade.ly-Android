@@ -9,14 +9,14 @@
 
     <string name="average">Average</string>
     <string name="bonus">Bonus:</string>
-    <string name="mark">Mark</string>
-    <string name="marks">Marks</string>
+    <string name="grade">Grade</string>
+    <string name="grades">Grades</string>
     <string name="subject">Subject</string>
     <string name="test">Test</string>
 
-    <string name="mark_sample1" translatable="false">01</string>
-    <string name="mark_sample2" translatable="false">01/60</string>
-    <string name="mark_sample3" translatable="false">60</string>
+    <string name="grade_sample1" translatable="false">01</string>
+    <string name="grade_sample2" translatable="false">01/60</string>
+    <string name="grade_sample3" translatable="false">60</string>
     <string name="slash" translatable="false">/</string>
     <string name="zero" translatable="false">0</string>
     <string name="plus" translatable="false">+</string>
@@ -24,11 +24,11 @@
 
     <string name="sort_by">Sort by</string>
     <string name="az" translatable="false">A-Z</string>
-    <string name="select_period">Select period</string>
+    <string name="select_term">Select term</string>
 
     <string name="settings">Settings</string>
     <string name="general">General</string>
-    <string name="period">Period</string>
+    <string name="term">Term</string>
     <string name="rating_system">Rating system</string>
     <string name="custom_rating_system">Custom rating system</string>
     <string name="custom">Custom</string>
@@ -77,9 +77,9 @@
     <string name="light_mode_auto">Auto (recommended)</string>
     <string name="light_mode_on">On</string>
     <string name="light_mode_off">Off</string>
-    <string name="confirm_delete">Are you sure you want to delete all your saved marks?</string>
-    <string name="reset">Reset Marks</string>
-    <string name="reset_summary">Delete all saved marks and reset app</string>
+    <string name="confirm_delete">Are you sure you want to delete all your saved grades?</string>
+    <string name="reset">Reset Grades</string>
+    <string name="reset_summary">Delete all saved grades and reset app</string>
     <string name="github_summary" translatable="false">https://github.com/NightDreamGames/Grade.ly</string>
     <string name="github">GitHub repository</string>
     <string name="english" translatable="false">English</string>

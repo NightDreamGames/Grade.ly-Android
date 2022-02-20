@@ -16,6 +16,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.NightDreamGames.Grade.ly.Calculator.Calculator;
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Calculator.Subject;
 import com.NightDreamGames.Grade.ly.Misc.CustomRecyclerViewAdapter;
@@ -38,7 +39,7 @@ public class SubjectActivity extends AppCompatActivity implements CustomRecycler
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         int position = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0);
-        subject = Manager.getCurrentPeriod().subjects.get(position);
+        subject = Manager.getCurrentTerm().subjects.get(position);
 
         adaptView();
         updateView();
@@ -54,7 +55,7 @@ public class SubjectActivity extends AppCompatActivity implements CustomRecycler
 
         binding.fab.setOnClickListener(v -> showNoticeDialog(0));
 
-        if (Manager.currentPeriod != -1) {
+        if (Manager.currentTerm != -1) {
             binding.average.setVisibility(View.GONE);
             binding.bonus.setVisibility(View.VISIBLE);
 
@@ -89,10 +90,10 @@ public class SubjectActivity extends AppCompatActivity implements CustomRecycler
 
         RecyclerView recyclerView = binding.recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        CustomRecyclerViewAdapter adapter = new CustomRecyclerViewAdapter(this, subject.getNames(), subject.getMarks(), 1);
+        CustomRecyclerViewAdapter adapter = new CustomRecyclerViewAdapter(this, subject.getNames(), subject.getGrades(), 1);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
-        binding.textView3.setText((subject.result == -1) ? "-" : Manager.format(subject.result));
+        binding.textView3.setText((subject.result == -1) ? "-" : Calculator.format(subject.result));
         binding.bonusText.setText(String.valueOf(subject.bonus));
     }
 
@@ -120,7 +121,7 @@ public class SubjectActivity extends AppCompatActivity implements CustomRecycler
             Manager.sortAll();
             updateView();
             return true;
-        } else if (id == R.id.sort_mark) {
+        } else if (id == R.id.sort_grade) {
             Manager.writePreference("sort_mode2", "1");
             Manager.sortAll();
             updateView();
@@ -134,15 +135,15 @@ public class SubjectActivity extends AppCompatActivity implements CustomRecycler
         if (type == 0)
             new TestDialogManager(subject).show(getSupportFragmentManager(), "TestDialogManager");
         else
-            new TestDialogManager(subject.tests.get(testPosition).mark1, subject.tests.get(testPosition).mark2, subject.tests.get(testPosition).name, subject).show(getSupportFragmentManager(), "TestDialogManager");
+            new TestDialogManager(subject.tests.get(testPosition).grade1, subject.tests.get(testPosition).grade2, subject.tests.get(testPosition).name, subject).show(getSupportFragmentManager(), "TestDialogManager");
     }
 
     @Override
-    public void onDialogPositiveClick(DialogFragment dialog, double mark1, double mark2, String name, int type) {
+    public void onDialogPositiveClick(DialogFragment dialog, double grade1, double grade2, String name, int type) {
         if (type == 0) {
-            subject.addTest(mark1, mark2, name);
+            subject.addTest(grade1, grade2, name);
         } else {
-            subject.editTest(testPosition, mark1, mark2, name);
+            subject.editTest(testPosition, grade1, grade2, name);
         }
         Manager.sortAll();
         updateView();
@@ -153,7 +154,7 @@ public class SubjectActivity extends AppCompatActivity implements CustomRecycler
     }
 
     public void showPopup(View v) {
-        if (Manager.currentPeriod != -1) {
+        if (Manager.currentTerm != -1) {
             PopupMenu popup = new PopupMenu(this, v);
             MenuInflater inflater = popup.getMenuInflater();
             inflater.inflate(R.menu.test_menu, popup.getMenu());

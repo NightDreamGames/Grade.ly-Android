@@ -5,14 +5,14 @@
     <string name="previous">Zeréck</string>
     <string name="test">Prüfung</string>
     <string name="average">Moyenne</string>
-    <string name="mark">Notte</string>
+    <string name="grade">Notte</string>
     <string name="subject">Fach</string>
     <string name="sort_by">Sortéieren</string>
     <string name="add">Zoufügen</string>
     <string name="edit">Beaarbechten</string>
     <string name="delete">Läschen</string>
     <string name="licenses">Lizenzen</string>
-    <string name="marks">Notten</string>
+    <string name="grades">Notten</string>
     <string name="bonus">Bonus:</string>
     <string name="rating_system">Bewäertungssystem</string>
     <string name="general">Allgemeng</string>
@@ -21,7 +21,7 @@
     <string name="round_to">Ronnen bis</string>
     <string name="about">Informatiounen</string>
     <string name="custom_rating_system">Personaliséierten Bewäertungssystem</string>
-    <string name="period">Periode</string>
+    <string name="term">Periode</string>
     <string name="custom">Personaliséiert</string>
     <string name="year">Joer</string>
     <string name="semesters">Semester</string>
@@ -32,7 +32,7 @@
     <string name="trimester_2">Trimester 2</string>
     <string name="trimester_3">Trimester 3</string>
     <string name="open">Öffnen</string>
-    <string name="select_period">Period auswielen</string>
+    <string name="select_term">Period auswielen</string>
     <string name="up">No uewen</string>
     <string name="down">No ënnen</string>
     <string name="half_up">Hallef no uewen</string>

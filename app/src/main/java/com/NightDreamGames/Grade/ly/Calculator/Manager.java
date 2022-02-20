@@ -7,16 +7,14 @@ import androidx.preference.PreferenceManager;
 import com.NightDreamGames.Grade.ly.Activities.MainActivity;
 import com.NightDreamGames.Grade.ly.Misc.Serialization;
 
-import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class Manager {
-    public static int totalMarks;
+    public static int totalGrades;
     public static ArrayList<Year> years;
-    public static ArrayList<Subject> periodTemplate;
+    public static ArrayList<Subject> termTemplate;
     public static int currentYear = 0;
-    public static int currentPeriod = 0;
+    public static int currentTerm = 0;
 
     public static void init() {
         readPreferences();
@@ -24,7 +22,7 @@ public class Manager {
         years = new ArrayList<>();
         years.add(new Year());
 
-        Manager.periodTemplate = new ArrayList<>();
+        Manager.termTemplate = new ArrayList<>();
 
         for (Year y : years) {
             y.calculate();
@@ -34,14 +32,14 @@ public class Manager {
     public static void readPreferences() {
         interpretPreferences();
 
-        currentPeriod = Integer.parseInt(getPreference("current_period", "0"));
+        currentTerm = Integer.parseInt(getPreference("current_term", "0"));
     }
 
     public static void interpretPreferences() {
-        if (!getPreference("total_marks", "60").equals("-1"))
-            totalMarks = Integer.parseInt(getPreference("total_marks", "60"));
+        if (!getPreference("total_grades", "60").equals("-1"))
+            totalGrades = Integer.parseInt(getPreference("total_grades", "60"));
         else
-            totalMarks = Integer.parseInt(getPreference("custom_mark", "60"));
+            totalGrades = Integer.parseInt(getPreference("custom_grade", "60"));
     }
 
     public static String getPreference(String key, String fallback) {
@@ -67,19 +65,9 @@ public class Manager {
         }
     }
 
-    public static String format(double d) {
-        String a;
-        if (d == (long) d) {
-            a = String.format(Locale.getDefault(), "%d", (long) d);
-        } else {
-            a = String.format(Locale.getDefault(), "%s", d);
-        }
-        return (d < 10) ? 0 + a : a;
-    }
-
     public static void clear() {
         for (Year y : years) {
-            for (Period p : y.periods) {
+            for (Term p : y.terms) {
                 for (Subject s : p.subjects) {
                     for (int i = 0; i < s.tests.size(); ) {
                         s.removeTest(i);
@@ -94,20 +82,20 @@ public class Manager {
         return years.get(currentYear);
     }
 
-    public static Period getCurrentPeriod() {
-        if (currentPeriod == -1) {
-            Period p = new Period();
+    public static Term getCurrentTerm() {
+        if (currentTerm == -1) {
+            Term p = new Term();
 
-            for (int i = 0; i < getCurrentYear().periods.size(); i++) {
-                for (int j = 0; j < getCurrentYear().periods.get(i).subjects.size(); j++) {
+            for (int i = 0; i < getCurrentYear().terms.size(); i++) {
+                for (int j = 0; j < getCurrentYear().terms.get(i).subjects.size(); j++) {
                     String name;
-                    if (Manager.getPreference("period", "period_trimester").equals("period_trimester"))
+                    if (Manager.getPreference("term", "term_trimester").equals("term_trimester"))
                         name = MainActivity.sApplication.getString(MainActivity.sApplication.getResources().getIdentifier("trimester_" + (i + 1), "string", MainActivity.sApplication.getPackageName()));
                     else
                         name = MainActivity.sApplication.getString(MainActivity.sApplication.getResources().getIdentifier("semester_" + (i + 1), "string", MainActivity.sApplication.getPackageName()));
 
-                    if (getCurrentYear().periods.get(i).subjects.get(j).result != -1)
-                        p.subjects.get(j).addTest(new Test(getCurrentYear().periods.get(i).subjects.get(j).result, totalMarks, name));
+                    if (getCurrentYear().terms.get(i).subjects.get(j).result != -1)
+                        p.subjects.get(j).addTest(new Test(getCurrentYear().terms.get(i).subjects.get(j).result, totalGrades, name));
                 }
             }
 
@@ -115,13 +103,13 @@ public class Manager {
             return p;
         }
 
-        return getCurrentYear().periods.get(currentPeriod);
+        return getCurrentYear().terms.get(currentTerm);
     }
 
     @SuppressWarnings("ComparatorCombinators")
     public static void sortAll() {
         for (Year y : years) {
-            for (Period p : y.periods) {
+            for (Term p : y.terms) {
                 p.sort();
                 for (Subject s : p.subjects) {
                     s.sort();
@@ -129,14 +117,7 @@ public class Manager {
             }
         }
 
-        switch (Integer.parseInt(Manager.getPreference("sort_mode3", "0"))) {
-            case 0:
-                periodTemplate.sort((o1, o2) -> Normalizer.normalize(o1.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").compareTo(Normalizer.normalize(o2.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "")));
-                break;
-            case 1:
-                periodTemplate.sort((o1, o2) -> Double.compare(o2.coefficient, o1.coefficient));
-                break;
-        }
+        Calculator.sort1(termTemplate, "sort_mode3");
 
         Serialization.Serialize();
     }

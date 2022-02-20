@@ -21,8 +21,9 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.NightDreamGames.Grade.ly.Calculator.Calculator;
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
-import com.NightDreamGames.Grade.ly.Calculator.Period;
+import com.NightDreamGames.Grade.ly.Calculator.Term;
 import com.NightDreamGames.Grade.ly.Misc.Compatibility;
 import com.NightDreamGames.Grade.ly.Misc.CustomRecyclerViewAdapter;
 import com.NightDreamGames.Grade.ly.Misc.Serialization;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sApplication = getApplication();
+        Compatibility.periodPreferences();
 
         switch (Manager.getPreference("dark_theme", "auto")) {
             case "on":
@@ -94,33 +96,33 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
     protected void updateView() {
         Manager.sortAll();
 
-        Period p = Manager.getCurrentPeriod();
+        Term p = Manager.getCurrentTerm();
 
         RecyclerView recyclerView = binding.recyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        CustomRecyclerViewAdapter adapter = new CustomRecyclerViewAdapter(this, p.getSubjects(), p.getMarks(), 0);
+        CustomRecyclerViewAdapter adapter = new CustomRecyclerViewAdapter(this, p.getSubjects(), p.getGrades(), 0);
 
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
 
-        binding.textView3.setText((p.result == -1) ? "-" : Manager.format(p.result));
+        binding.textView3.setText((p.result == -1) ? "-" : Calculator.format(p.result));
     }
 
     protected void setTitle() {
-        switch (Manager.currentPeriod) {
+        switch (Manager.currentTerm) {
             case 0:
-                if (Manager.getPreference("period", "period_trimester").equals("period_semester"))
+                if (Manager.getPreference("term", "term_trimester").equals("term_semester"))
                     setTitle(R.string.semester_1);
-                else if (Manager.getPreference("period", "period_trimester").equals("period_trimester"))
+                else if (Manager.getPreference("term", "term_trimester").equals("term_trimester"))
                     setTitle(R.string.trimester_1);
-                else if (Manager.getPreference("period", "period_trimester").equals("period_year"))
+                else if (Manager.getPreference("term", "term_trimester").equals("term_year"))
                     setTitle(R.string.year);
                 break;
             case 1:
-                if (Manager.getPreference("period", "period_trimester").equals("period_semester"))
+                if (Manager.getPreference("term", "term_trimester").equals("term_semester"))
                     setTitle(R.string.semester_2);
-                else if (Manager.getPreference("period", "period_trimester").equals("period_trimester"))
+                else if (Manager.getPreference("term", "term_trimester").equals("term_trimester"))
                     setTitle(R.string.trimester_2);
                 break;
             case 2:
@@ -150,8 +152,8 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        switch (Manager.getPreference("period", "period_trimester")) {
-            case "period_trimester":
+        switch (Manager.getPreference("term", "term_trimester")) {
+            case "term_trimester":
                 menu.findItem(R.id.trimester_1).setVisible(true);
                 menu.findItem(R.id.trimester_2).setVisible(true);
                 menu.findItem(R.id.trimester_3).setVisible(true);
@@ -159,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
                 menu.findItem(R.id.semester_1).setVisible(false);
                 menu.findItem(R.id.semester_2).setVisible(false);
                 break;
-            case "period_semester":
+            case "term_semester":
                 menu.findItem(R.id.semester_1).setVisible(true);
                 menu.findItem(R.id.semester_2).setVisible(true);
 
@@ -167,8 +169,8 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
                 menu.findItem(R.id.trimester_2).setVisible(false);
                 menu.findItem(R.id.trimester_3).setVisible(false);
                 break;
-            case "period_year":
-                menu.findItem(R.id.period_selector).setVisible(false);
+            case "term_year":
+                menu.findItem(R.id.term_selector).setVisible(false);
                 break;
         }
 
@@ -184,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
             Manager.sortAll();
             updateView();
             return true;
-        } else if (id == R.id.sort_mark) {
+        } else if (id == R.id.sort_grade) {
             Manager.writePreference("sort_mode", "1");
             Manager.sortAll();
             updateView();
@@ -194,28 +196,28 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
             //overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left);
             return true;
         } else if (id == R.id.semester_1 || id == R.id.trimester_1) {
-            Manager.currentPeriod = 0;
-            Manager.writePreference("current_period", String.valueOf(Manager.currentPeriod));
+            Manager.currentTerm = 0;
+            Manager.writePreference("current_term", String.valueOf(Manager.currentTerm));
             adaptView();
             updateView();
             return true;
         } else if (id == R.id.semester_2 || id == R.id.trimester_2) {
-            Manager.currentPeriod = 1;
-            Manager.writePreference("current_period", String.valueOf(Manager.currentPeriod));
+            Manager.currentTerm = 1;
+            Manager.writePreference("current_term", String.valueOf(Manager.currentTerm));
             adaptView();
             updateView();
             return true;
         } else if (id == R.id.trimester_3) {
-            Manager.currentPeriod = 2;
-            Manager.writePreference("current_period", String.valueOf(Manager.currentPeriod));
+            Manager.currentTerm = 2;
+            Manager.writePreference("current_term", String.valueOf(Manager.currentTerm));
             adaptView();
             updateView();
             return true;
         } else if (id == R.id.year) {
-            if (Manager.getPreference("period", "period_trimester").equals("period_year"))
-                Manager.currentPeriod = 0;
-            else Manager.currentPeriod = -1;
-            Manager.writePreference("current_period", String.valueOf(Manager.currentPeriod));
+            if (Manager.getPreference("term", "term_trimester").equals("term_year"))
+                Manager.currentTerm = 0;
+            else Manager.currentTerm = -1;
+            Manager.writePreference("current_term", String.valueOf(Manager.currentTerm));
             adaptView();
             updateView();
             return true;

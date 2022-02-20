@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
+import com.NightDreamGames.Grade.ly.Calculator.Calculator;
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Calculator.Subject;
 import com.NightDreamGames.Grade.ly.Calculator.Test;
@@ -27,8 +28,8 @@ public class TestDialogManager extends DialogFragment {
     private final int type;
     private final Subject subject;
     TestDialogListener listener;
-    private double mark1 = -1;
-    private double mark2 = -1;
+    private double grade1 = -1;
+    private double grade2 = -1;
     private String name = "";
     private String defaultName;
 
@@ -37,10 +38,10 @@ public class TestDialogManager extends DialogFragment {
         this.subject = subject;
     }
 
-    public TestDialogManager(double mark1, double mark2, String name, Subject subject) {
+    public TestDialogManager(double grade1, double grade2, String name, Subject subject) {
         this.type = 1;
-        this.mark1 = mark1;
-        this.mark2 = mark2;
+        this.grade1 = grade1;
+        this.grade2 = grade2;
         this.name = name;
         this.subject = subject;
     }
@@ -65,16 +66,16 @@ public class TestDialogManager extends DialogFragment {
             name = editText0.getText().toString();
 
         if (editText1.getText().toString().isEmpty())
-            mark1 = 1;
+            grade1 = 1;
         else
-            mark1 = Double.parseDouble(editText1.getText().toString());
+            grade1 = Double.parseDouble(editText1.getText().toString());
 
         if (editText2.getText().toString().isEmpty())
-            mark2 = Manager.totalMarks;
+            grade2 = Manager.totalGrades;
         else
-            mark2 = Double.parseDouble(editText2.getText().toString());
+            grade2 = Double.parseDouble(editText2.getText().toString());
 
-        listener.onDialogPositiveClick(TestDialogManager.this, mark1, mark2, name, type);
+        listener.onDialogPositiveClick(TestDialogManager.this, grade1, grade2, name, type);
     }
 
     @NonNull
@@ -83,15 +84,15 @@ public class TestDialogManager extends DialogFragment {
         // Build the dialog and set up the button click handlers
         View dialogView = getLayoutInflater().inflate(R.layout.test_dialog, null);
         EditText editText0 = dialogView.findViewById(R.id.nameEditText);
-        EditText editText1 = dialogView.findViewById(R.id.mark1EditText);
-        EditText editText2 = dialogView.findViewById(R.id.mark2EditText);
+        EditText editText1 = dialogView.findViewById(R.id.grade1EditText);
+        EditText editText2 = dialogView.findViewById(R.id.grade2EditText);
 
         if (!name.isEmpty())
             editText0.setText(name);
-        if (mark1 != -1)
-            editText1.setText(Manager.format(mark1));
-        if (mark2 != -1)
-            editText2.setText(Manager.format(mark2));
+        if (grade1 != -1)
+            editText1.setText(Calculator.format(grade1));
+        if (grade2 != -1)
+            editText2.setText(Calculator.format(grade2));
 
         editText0.selectAll();
         editText1.selectAll();
@@ -115,7 +116,7 @@ public class TestDialogManager extends DialogFragment {
         while (a);
 
         editText0.setHint(defaultName);
-        editText2.setHint(String.valueOf(Manager.totalMarks));
+        editText2.setHint(String.valueOf(Manager.totalGrades));
 
         editText2.setOnEditorActionListener((v, actionId, event) -> {
             if (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER
@@ -148,7 +149,7 @@ public class TestDialogManager extends DialogFragment {
     }
 
     public interface TestDialogListener {
-        void onDialogPositiveClick(DialogFragment dialog, double mark1, double mark2, String name, int type);
+        void onDialogPositiveClick(DialogFragment dialog, double grade1, double grade2, String name, int type);
 
         @SuppressWarnings("EmptyMethod")
         void onDialogNegativeClick(DialogFragment dialog);

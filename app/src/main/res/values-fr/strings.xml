@@ -6,13 +6,13 @@
     <string name="test">Devoir</string>
     <string name="average">Moyenne</string>
     <string name="subject">Matière</string>
-    <string name="mark">Note</string>
+    <string name="grade">Note</string>
     <string name="sort_by">Trier par</string>
     <string name="add">Ajouter</string>
     <string name="edit">Modifier</string>
     <string name="delete">Supprimer</string>
     <string name="licenses">Licenses</string>
-    <string name="marks">Notes</string>
+    <string name="grades">Notes</string>
     <string name="bonus">Bonus:</string>
     <string name="rating_system">Système de notation</string>
     <string name="general">Général</string>
@@ -22,8 +22,8 @@
     <string name="about">À propos</string>
     <string name="custom_rating_system">Système de notation personnalisé</string>
     <string name="open">Ouvrir</string>
-    <string name="select_period">Sélectionner période</string>
-    <string name="period">Période</string>
+    <string name="select_term">Sélectionner période</string>
+    <string name="term">Période</string>
     <string name="custom">Personnalisé</string>
     <string name="up">Vers le haut</string>
     <string name="down">Vers le bas</string>

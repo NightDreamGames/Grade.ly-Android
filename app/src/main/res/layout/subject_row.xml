@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
                 android:gravity="end"
-                android:text="@string/mark_sample1"
+                android:text="@string/grade_sample1"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/subjectArrow"

@@ -48,7 +48,7 @@ A clean and open-source app to track and manage your school grades.
 
 # 📒 FEATURES
 
-► Grade and Average Tracking -- Averages automatically calculated through every Period and Subject.
+► Grade and Average Tracking -- Averages automatically calculated through every Term and Subject.
 
 ► Easy Grade Entry -- Enter your Grade quickly without bothering with the unnecessary stuff by
 keeping the Default values.
@@ -65,7 +65,7 @@ by selecting your Class, or else by creating your own Subjects with Weights.
 
 ► Rounding -- Choose how your Grades get rounded: Up, Down, To Integer, 10th, 100th, or 1000th.
 
-► Multiple Semester / Trimester / Year Support -- Select which period you want to add Grades to and
+► Multiple Semester / Trimester / Year Support -- Select which term you want to add Grades to and
 switch them at any time. You have complete flexibility and Grade.ly handles it all.
 
 ► Clean Interface -- Enjoy a clean interface, available in Light and Dark Mode.

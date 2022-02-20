@@ -13,9 +13,10 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.NightDreamGames.Grade.ly.Calculator.Calculator;
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
-import com.NightDreamGames.Grade.ly.Calculator.Period;
 import com.NightDreamGames.Grade.ly.Calculator.Subject;
+import com.NightDreamGames.Grade.ly.Calculator.Term;
 import com.NightDreamGames.Grade.ly.Misc.CustomRecyclerViewAdapter;
 import com.NightDreamGames.Grade.ly.Misc.SubjectDialogManager;
 import com.NightDreamGames.Grade.ly.R;
@@ -47,12 +48,12 @@ public class CreatorActivity extends AppCompatActivity implements CustomRecycler
         Manager.sortAll();
 
         ArrayList<String> a = new ArrayList<>();
-        for (int i = 0; i < Manager.periodTemplate.size(); i++)
-            a.add(Manager.periodTemplate.get(i).name);
+        for (int i = 0; i < Manager.termTemplate.size(); i++)
+            a.add(Manager.termTemplate.get(i).name);
 
         ArrayList<String> b = new ArrayList<>();
-        for (int i = 0; i < Manager.periodTemplate.size(); i++) {
-            String x = Manager.format(Manager.periodTemplate.get(i).coefficient);
+        for (int i = 0; i < Manager.termTemplate.size(); i++) {
+            String x = Calculator.format(Manager.termTemplate.get(i).coefficient);
             if (x.startsWith("0"))
                 x = x.substring(1);
             b.add(x);
@@ -87,7 +88,7 @@ public class CreatorActivity extends AppCompatActivity implements CustomRecycler
         } else if (id == R.id.add) {
             showNoticeDialog(0);
         } else if (id == R.id.sort_az) Manager.writePreference("sort_mode3", "0");
-        else if (id == R.id.sort_mark) Manager.writePreference("sort_mode3", "1");
+        else if (id == R.id.sort_grade) Manager.writePreference("sort_mode3", "1");
 
         updateView();
         return true;
@@ -97,26 +98,26 @@ public class CreatorActivity extends AppCompatActivity implements CustomRecycler
         if (type == 0)
             new SubjectDialogManager().show(getSupportFragmentManager(), "SubjectDialogManager");
         else
-            new SubjectDialogManager(Manager.periodTemplate.get(subjectPosition).name, Manager.periodTemplate.get(subjectPosition).coefficient).show(getSupportFragmentManager(), "SubjectDialogManager");
+            new SubjectDialogManager(Manager.termTemplate.get(subjectPosition).name, Manager.termTemplate.get(subjectPosition).coefficient).show(getSupportFragmentManager(), "SubjectDialogManager");
     }
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, String name, double coefficient, int type) {
         if (type == 0) {
-            Manager.periodTemplate.add(new Subject(name, coefficient));
+            Manager.termTemplate.add(new Subject(name, coefficient));
 
-            for (Period p : Manager.getCurrentYear().periods) {
+            for (Term p : Manager.getCurrentYear().terms) {
                 p.subjects.add(new Subject(name, coefficient));
             }
 
         } else {
-            Manager.periodTemplate.get(subjectPosition).name = name;
-            Manager.periodTemplate.get(subjectPosition).coefficient = coefficient;
+            Manager.termTemplate.get(subjectPosition).name = name;
+            Manager.termTemplate.get(subjectPosition).coefficient = coefficient;
 
-            for (Period p : Manager.getCurrentYear().periods)
+            for (Term p : Manager.getCurrentYear().terms)
                 for (int i = 0; i < p.subjects.size(); i++) {
-                    p.subjects.get(i).name = Manager.periodTemplate.get(i).name;
-                    p.subjects.get(i).coefficient = Manager.periodTemplate.get(i).coefficient;
+                    p.subjects.get(i).name = Manager.termTemplate.get(i).name;
+                    p.subjects.get(i).coefficient = Manager.termTemplate.get(i).coefficient;
                 }
         }
 
@@ -145,9 +146,9 @@ public class CreatorActivity extends AppCompatActivity implements CustomRecycler
             updateView();
             return true;
         } else if (itemId == R.id.delete) {
-            Manager.periodTemplate.remove(subjectPosition);
+            Manager.termTemplate.remove(subjectPosition);
 
-            for (Period p : Manager.getCurrentYear().periods)
+            for (Term p : Manager.getCurrentYear().terms)
                 p.subjects.remove(subjectPosition);
 
             updateView();

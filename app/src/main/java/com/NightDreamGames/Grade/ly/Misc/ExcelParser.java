@@ -55,7 +55,7 @@ public class ExcelParser {
     }
 
     public static void fillSubjects(String className, boolean latin, boolean chinese) {
-        Manager.periodTemplate.clear();
+        Manager.termTemplate.clear();
 
         int position = 4;
         if (latin) position = 6;
@@ -76,7 +76,7 @@ public class ExcelParser {
                 if (!data.isEmpty())
                     coefficient = Double.parseDouble(data);
 
-                Manager.periodTemplate.add(new Subject(name, coefficient));
+                Manager.termTemplate.add(new Subject(name, coefficient));
             }
         }
 

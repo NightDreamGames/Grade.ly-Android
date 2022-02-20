@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="mark">Note</string>
+    <string name="grade">Note</string>
     <string name="subject">Fach</string>
     <string name="test">Prüfung</string>
     <string name="average">Durchschnitt</string>
@@ -12,7 +12,7 @@
     <string name="edit">Bearbeiten</string>
     <string name="delete">Löschen</string>
     <string name="licenses">Lizenzen</string>
-    <string name="marks">Noten</string>
+    <string name="grades">Noten</string>
     <string name="bonus">Bonus:</string>
     <string name="rating_system">Bewertungssystem</string>
     <string name="general">Allgemein</string>
@@ -22,7 +22,7 @@
     <string name="about">Informationen</string>
     <string name="custom_rating_system">Personalisiertes Bewertungssystem</string>
     <string name="open">Öffnen</string>
-    <string name="period">Periode</string>
+    <string name="term">Periode</string>
     <string name="custom">Personalisiert</string>
     <string name="year">Jahr</string>
     <string name="semesters">Semester</string>
@@ -32,7 +32,7 @@
     <string name="trimester_1">Trimester 1</string>
     <string name="trimester_2">Trimester 2</string>
     <string name="trimester_3">Trimester 3</string>
-    <string name="select_period">Periode auswählen</string>
+    <string name="select_term">Periode auswählen</string>
     <string name="up">Nach oben</string>
     <string name="half_up">Halb nach oben</string>
     <string name="down">Nach unten</string>

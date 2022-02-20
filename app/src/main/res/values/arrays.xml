@@ -9,27 +9,27 @@
         <item>"other"</item>
     </string-array>
 
-    <!-- Period Preference -->
-    <string-array name="period_entries">
+    <!-- Term Preference -->
+    <string-array name="term_entries">
         <item>@string/trimesters</item>
         <item>@string/semesters</item>
         <item>@string/year</item>
     </string-array>
-    <string-array name="period_values">
-        <item>period_trimester</item>
-        <item>period_semester</item>
-        <item>period_year</item>
+    <string-array name="term_values">
+        <item>term_trimester</item>
+        <item>term_semester</item>
+        <item>term_year</item>
     </string-array>
 
-    <!-- Mark Preference -->
-    <string-array name="mark_entries">
+    <!-- Grade Preference -->
+    <string-array name="grade_entries">
         <item>10</item>
         <item>20</item>
         <item>60</item>
         <item>100</item>
         <item>@string/custom</item>
     </string-array>
-    <string-array name="mark_values">
+    <string-array name="grade_values">
         <item>10</item>
         <item>20</item>
         <item>60</item>

@@ -4,9 +4,9 @@
     tools:context="com.NightDreamGames.Grade.ly.Activities.MainActivity">
 
     <item
-        android:id="@+id/period_selector"
+        android:id="@+id/term_selector"
         android:orderInCategory="100"
-        android:title="@string/select_period"
+        android:title="@string/select_term"
         app:showAsAction="never">
         <menu>
             <!-- Semester -->
@@ -63,9 +63,9 @@
                 app:showAsAction="never" />
 
             <item
-                android:id="@+id/sort_mark"
+                android:id="@+id/sort_grade"
                 android:orderInCategory="100"
-                android:title="@string/marks"
+                android:title="@string/grades"
                 app:showAsAction="never" />
         </menu>
     </item>

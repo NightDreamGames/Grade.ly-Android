@@ -16,7 +16,7 @@ public class Serialization {
 
     public static void Serialize() {
         Manager.writePreference("data", gson.toJson(Manager.years));
-        Manager.writePreference("default_data", gson.toJson(Manager.periodTemplate));
+        Manager.writePreference("default_data", gson.toJson(Manager.termTemplate));
     }
 
     public static void Deserialize() {
@@ -24,7 +24,7 @@ public class Serialization {
             Manager.years = gson.fromJson(Manager.getPreference("data", ""), new TypeToken<ArrayList<Year>>() {
             }.getType());
 
-            Manager.periodTemplate = gson.fromJson(Manager.getPreference("default_data", ""), new TypeToken<ArrayList<Subject>>() {
+            Manager.termTemplate = gson.fromJson(Manager.getPreference("default_data", ""), new TypeToken<ArrayList<Subject>>() {
             }.getType());
         }
     }

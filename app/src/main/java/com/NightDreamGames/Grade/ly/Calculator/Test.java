@@ -3,13 +3,13 @@ package com.NightDreamGames.Grade.ly.Calculator;
 import java.io.Serializable;
 
 public class Test implements Serializable {
-    public double mark1;
-    public double mark2;
+    public double grade1;
+    public double grade2;
     public String name;
 
-    public Test(double mark1, double mark2, String name) {
-        this.mark1 = mark1;
-        this.mark2 = mark2;
+    public Test(double grade1, double grade2, String name) {
+        this.grade1 = grade1;
+        this.grade2 = grade2;
         this.name = name;
     }
 }

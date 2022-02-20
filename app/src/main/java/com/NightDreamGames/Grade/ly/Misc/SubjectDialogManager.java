@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
+import com.NightDreamGames.Grade.ly.Calculator.Calculator;
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Calculator.Subject;
 import com.NightDreamGames.Grade.ly.R;
@@ -77,7 +78,7 @@ public class SubjectDialogManager extends DialogFragment {
         if (!name.isEmpty())
             editText0.setText(name);
         if (coefficient != -1) {
-            String a = Manager.format(coefficient);
+            String a = Calculator.format(coefficient);
             if (a.startsWith("0"))
                 a = a.substring(1);
             editText2.setText(a);
@@ -90,9 +91,9 @@ public class SubjectDialogManager extends DialogFragment {
         int i = 1;
 
         do {
-            defaultName = getString(R.string.subject) + " " + (Manager.periodTemplate.size() + i);
+            defaultName = getString(R.string.subject) + " " + (Manager.termTemplate.size() + i);
 
-            for (Subject s : Manager.periodTemplate) {
+            for (Subject s : Manager.termTemplate) {
                 if (s.name.equals(defaultName)) {
                     a = true;
                     i++;

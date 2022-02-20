@@ -24,7 +24,7 @@
             android:inputType="text"
             android:maxWidth="280dp"
             android:minWidth="120dp"
-            android:nextFocusDown="@+id/mark1EditText"
+            android:nextFocusDown="@+id/grade1EditText"
             android:textColor="?android:attr/textColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -38,20 +38,20 @@
         android:layout_below="@+id/layout">
 
         <EditText
-            android:id="@+id/mark1EditText"
+            android:id="@+id/grade1EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:autofillHints="mark"
+            android:autofillHints="grade"
             android:backgroundTint="?attr/dividerColorDark"
             android:digits="0123456789."
             android:gravity="end"
-            android:hint="@string/mark_sample1"
+            android:hint="@string/grade_sample1"
             android:imeOptions="actionNext"
             android:inputType="numberDecimal"
             android:maxLength="6"
             android:minWidth="48dp"
-            android:nextFocusDown="@+id/mark2EditText"
+            android:nextFocusDown="@+id/grade2EditText"
             android:textColor="?android:attr/textColor"
             app:layout_constraintEnd_toStartOf="@+id/textView"
             app:layout_constraintTop_toTopOf="parent" />
@@ -72,15 +72,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/mark2EditText"
+            android:id="@+id/grade2EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:autofillHints="total_mark"
+            android:autofillHints="total_grade"
             android:backgroundTint="?attr/dividerColorDark"
             android:digits="0123456789."
             android:gravity="start"
-            android:hint="@string/mark_sample3"
+            android:hint="@string/grade_sample3"
             android:imeOptions="actionDone"
             android:inputType="numberDecimal"
             android:maxLength="6"

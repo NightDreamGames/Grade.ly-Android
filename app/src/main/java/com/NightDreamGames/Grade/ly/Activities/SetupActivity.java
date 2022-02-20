@@ -44,8 +44,8 @@ public class SetupActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(view ->
         {
             if (Manager.getPreference("school_system", "").equals("lux")) {
-                Manager.writePreference("period", "period_semester");
-                Manager.writePreference("total_marks", "60");
+                Manager.writePreference("term", "term_semester");
+                Manager.writePreference("total_grades", "60");
                 Manager.writePreference("rounding_mode", "rounding_up");
                 Manager.writePreference("round_to", "1");
 
@@ -89,9 +89,9 @@ public class SetupActivity extends AppCompatActivity {
             androidx.preference.ListPreference classPreference = findPreference("class");
             androidx.preference.ListPreference variant = findPreference("variant");
             androidx.preference.Preference es = findPreference("edit_subjects");
-            androidx.preference.Preference period = findPreference("period");
-            androidx.preference.Preference tMark = findPreference("total_marks");
-            androidx.preference.EditTextPreference cMark = findPreference("custom_mark");
+            androidx.preference.Preference term = findPreference("term");
+            androidx.preference.Preference tGrade = findPreference("total_grades");
+            androidx.preference.EditTextPreference cGrade = findPreference("custom_grade");
 
             lux.setVisible(false);
             other.setVisible(false);
@@ -140,22 +140,22 @@ public class SetupActivity extends AppCompatActivity {
                 return true;
             });
 
-            period.setOnPreferenceChangeListener((preference, newValue) -> {
-                Compatibility.periodCount((String) newValue);
+            term.setOnPreferenceChangeListener((preference, newValue) -> {
+                Compatibility.termCount((String) newValue);
                 return true;
             });
 
-            tMark.setOnPreferenceChangeListener((preference, newValue) -> {
-                cMark.setVisible(newValue.equals("-1"));
+            tGrade.setOnPreferenceChangeListener((preference, newValue) -> {
+                cGrade.setVisible(newValue.equals("-1"));
                 return true;
             });
-            cMark.setOnBindEditTextListener(editText -> {
+            cGrade.setOnBindEditTextListener(editText -> {
                 editText.setInputType(InputType.TYPE_CLASS_NUMBER);
                 editText.selectAll();
                 int maxLength = 6;
                 editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
             });
-            cMark.setVisible(Manager.getPreference("total_marks", "60").equals("-1"));
+            cGrade.setVisible(Manager.getPreference("total_grades", "60").equals("-1"));
 
             variant.setVisible(false);
 

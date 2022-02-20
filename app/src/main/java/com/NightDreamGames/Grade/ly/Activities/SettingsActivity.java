@@ -71,9 +71,9 @@ public class SettingsActivity extends AppCompatActivity {
             setPreferencesFromResource(R.xml.preferences, rootKey);
 
             androidx.preference.Preference es = findPreference("edit_subjects");
-            androidx.preference.Preference period = findPreference("period");
-            androidx.preference.Preference tMark = findPreference("total_marks");
-            androidx.preference.EditTextPreference cMark = findPreference("custom_mark");
+            androidx.preference.Preference term = findPreference("term");
+            androidx.preference.Preference tGrade = findPreference("total_grades");
+            androidx.preference.EditTextPreference cGrade = findPreference("custom_grade");
             androidx.preference.Preference reset = findPreference("reset");
             androidx.preference.Preference dark = findPreference("dark_theme");
             androidx.preference.Preference language = findPreference("language");
@@ -88,22 +88,22 @@ public class SettingsActivity extends AppCompatActivity {
                 return true;
             });
 
-            period.setOnPreferenceChangeListener((preference, newValue) -> {
-                Compatibility.periodCount((String) newValue);
+            term.setOnPreferenceChangeListener((preference, newValue) -> {
+                Compatibility.termCount((String) newValue);
                 return true;
             });
 
-            tMark.setOnPreferenceChangeListener((preference, newValue) -> {
-                cMark.setVisible(newValue.equals("-1"));
+            tGrade.setOnPreferenceChangeListener((preference, newValue) -> {
+                cGrade.setVisible(newValue.equals("-1"));
                 return true;
             });
-            cMark.setOnBindEditTextListener(editText -> {
+            cGrade.setOnBindEditTextListener(editText -> {
                 editText.setInputType(InputType.TYPE_CLASS_NUMBER);
                 editText.selectAll();
                 int maxLength = 6;
                 editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
             });
-            cMark.setVisible(Manager.getPreference("total_marks", "60").equals("-1"));
+            cGrade.setVisible(Manager.getPreference("total_grades", "60").equals("-1"));
 
             reset.setOnPreferenceClickListener(preference -> confirmChange());
 

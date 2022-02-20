@@ -44,27 +44,27 @@
             app:title="@string/edit_subjects" />
 
         <ListPreference
-            app:defaultValue="period_trimester"
-            app:entries="@array/period_entries"
-            app:entryValues="@array/period_values"
+            app:defaultValue="term_trimester"
+            app:entries="@array/term_entries"
+            app:entryValues="@array/term_values"
             app:icon="@drawable/ic_outline_access_time_24"
-            app:key="period"
-            app:title="@string/period"
+            app:key="term"
+            app:title="@string/term"
             app:useSimpleSummaryProvider="true" />
 
         <ListPreference
             app:defaultValue="60"
-            app:entries="@array/mark_entries"
-            app:entryValues="@array/mark_values"
+            app:entries="@array/grade_entries"
+            app:entryValues="@array/grade_values"
             app:icon="@drawable/ic_file_regular"
-            app:key="total_marks"
+            app:key="total_grades"
             app:title="@string/rating_system"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
             app:defaultValue="60"
             app:dialogTitle="@string/custom_rating_system"
-            app:key="custom_mark"
+            app:key="custom_grade"
             app:title="@string/custom_rating_system"
             app:useSimpleSummaryProvider="true" />
 
