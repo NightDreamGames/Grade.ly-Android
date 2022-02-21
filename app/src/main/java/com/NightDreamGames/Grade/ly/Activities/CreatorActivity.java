@@ -18,6 +18,7 @@ import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Calculator.Subject;
 import com.NightDreamGames.Grade.ly.Calculator.Term;
 import com.NightDreamGames.Grade.ly.Misc.CustomRecyclerViewAdapter;
+import com.NightDreamGames.Grade.ly.Misc.Preferences;
 import com.NightDreamGames.Grade.ly.Misc.SubjectDialogManager;
 import com.NightDreamGames.Grade.ly.R;
 import com.NightDreamGames.Grade.ly.databinding.EditSubjectActivityBinding;
@@ -87,8 +88,8 @@ public class CreatorActivity extends AppCompatActivity implements CustomRecycler
             return true;
         } else if (id == R.id.add) {
             showNoticeDialog(0);
-        } else if (id == R.id.sort_az) Manager.writePreference("sort_mode3", "0");
-        else if (id == R.id.sort_grade) Manager.writePreference("sort_mode3", "1");
+        } else if (id == R.id.sort_az) Preferences.setPreference("sort_mode3", "0");
+        else if (id == R.id.sort_grade) Preferences.setPreference("sort_mode3", "1");
 
         updateView();
         return true;

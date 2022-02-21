@@ -15,19 +15,18 @@ import androidx.preference.PreferenceManager;
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Misc.Compatibility;
 import com.NightDreamGames.Grade.ly.Misc.ExcelParser;
+import com.NightDreamGames.Grade.ly.Misc.Preferences;
 import com.NightDreamGames.Grade.ly.R;
 import com.NightDreamGames.Grade.ly.databinding.SettingsActivityBinding;
 
 import java.io.IOException;
 
 public class SetupActivity extends AppCompatActivity {
-    //TODO remove memory leak
-    private static SettingsActivityBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = SettingsActivityBinding.inflate(getLayoutInflater());
+        com.NightDreamGames.Grade.ly.databinding.SettingsActivityBinding binding = SettingsActivityBinding.inflate(getLayoutInflater());
 
         setTitle(R.string.setup);
 
@@ -35,7 +34,7 @@ public class SetupActivity extends AppCompatActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.settings, new SettingsFragment())
+                .replace(R.id.settings, new SettingsFragment(binding))
                 .commit();
 
         setSupportActionBar(binding.toolbar);
@@ -43,21 +42,21 @@ public class SetupActivity extends AppCompatActivity {
         binding.fab.setVisibility(View.INVISIBLE);
         binding.fab.setOnClickListener(view ->
         {
-            if (Manager.getPreference("school_system", "").equals("lux")) {
-                Manager.writePreference("term", "term_semester");
-                Manager.writePreference("total_grades", "60");
-                Manager.writePreference("rounding_mode", "rounding_up");
-                Manager.writePreference("round_to", "1");
+            if (Preferences.getPreference("school_system", "").equals("lux")) {
+                Preferences.setPreference("term", "term_semester");
+                Preferences.setPreference("total_grades", "60");
+                Preferences.setPreference("rounding_mode", "rounding_up");
+                Preferences.setPreference("round_to", "1");
 
-                String variant = Manager.getPreference("variant", "basic");
-                ExcelParser.fillSubjects(Manager.getPreference("class", "7CI"), variant.equals("latin"), variant.equals("chinese"));
+                String variant = Preferences.getPreference("variant", "basic");
+                ExcelParser.fillSubjects(Preferences.getPreference("class", "7CI"), variant.equals("latin"), variant.equals("chinese"));
             }
-            Manager.writePreference("isFirstRun", "false");
+            Preferences.setPreference("isFirstRun", "false");
 
             finish();
         });
 
-        Manager.deletePreference("school_system");
+        Preferences.deletePreference("school_system");
     }
 
     @Override
@@ -72,6 +71,12 @@ public class SetupActivity extends AppCompatActivity {
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
+        private final SettingsActivityBinding binding;
+
+        public SettingsFragment(SettingsActivityBinding binding) {
+            this.binding = binding;
+        }
+
         final SharedPreferences.OnSharedPreferenceChangeListener listener = (prefs, key) -> {
             Manager.interpretPreferences();
             Manager.calculate();
@@ -100,7 +105,7 @@ public class SetupActivity extends AppCompatActivity {
                 if (newValue.equals("lux")) {
                     lux.setVisible(true);
                     other.setVisible(false);
-                    if (Manager.getPreference("class", "Not set").equals("Not set"))
+                    if (Preferences.getPreference("class", "Not set").equals("Not set"))
                         binding.fab.setVisibility(View.INVISIBLE);
                     else
                         binding.fab.setVisibility(View.VISIBLE);
@@ -155,7 +160,7 @@ public class SetupActivity extends AppCompatActivity {
                 int maxLength = 6;
                 editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
             });
-            cGrade.setVisible(Manager.getPreference("total_grades", "60").equals("-1"));
+            cGrade.setVisible(Preferences.getPreference("total_grades", "60").equals("-1"));
 
             variant.setVisible(false);
 

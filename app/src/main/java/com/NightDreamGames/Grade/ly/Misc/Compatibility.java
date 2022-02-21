@@ -1,8 +1,5 @@
 package com.NightDreamGames.Grade.ly.Misc;
 
-import androidx.preference.PreferenceManager;
-
-import com.NightDreamGames.Grade.ly.Activities.MainActivity;
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Calculator.Term;
 
@@ -12,14 +9,14 @@ public class Compatibility {
     public static void init() {
         termCount("");
 
-        Manager.writePreference("data_version", String.valueOf(DATA_VERSION));
+        Preferences.setPreference("data_version", String.valueOf(DATA_VERSION));
     }
 
     public static void termCount(String newValue) {
         int k = 0;
 
         if (newValue.isEmpty())
-            newValue = Manager.getPreference("term", "term_trimester");
+            newValue = Preferences.getPreference("term", "term_trimester");
 
         switch (newValue) {
             case "term_trimester":
@@ -46,27 +43,25 @@ public class Compatibility {
     }
 
     public static void periodPreferences() {
-        if (!Boolean.parseBoolean(Manager.getPreference("isFirstRun", "true")))
-            if (Integer.parseInt(Manager.getPreference("data_version", "1")) < 2) {
-                Manager.writePreference("term", Manager.getPreference("period", "period_trimester"));
-                Manager.writePreference("current_term", Manager.getPreference("current_period", "0"));
-                Manager.writePreference("sort_mode1", Manager.getPreference("sort_mode", "0"));
-                Manager.deletePreference("period");
-                Manager.deletePreference("current_period");
-                Manager.deletePreference("sort_mode");
+        if (!Boolean.parseBoolean(Preferences.getPreference("isFirstRun", "true"))) {
+            if (Integer.parseInt(Preferences.getPreference("data_version", "1")) < 2) {
+                Preferences.setPreference("term", Preferences.getPreference("period", "term_trimester").replace("period", "term"));
+                Preferences.setPreference("current_term", Preferences.getPreference("current_period", "0"));
+                Preferences.setPreference("sort_mode1", Preferences.getPreference("sort_mode", "0"));
+                Preferences.deletePreference("period");
+                Preferences.deletePreference("current_period");
+                Preferences.deletePreference("sort_mode");
 
-                if (PreferenceManager.getDefaultSharedPreferences(MainActivity.sApplication).contains("data")) {
-                    Manager.writePreference("data", Manager.getPreference("data", "")
+                //TODO test if this works
+                if (Preferences.existsPreference("data")) {
+                    Preferences.setPreference("data", Preferences.getPreference("data", "")
                             .replaceAll("period", "term")
-                            .replaceAll("Period", "Term")
-                            .replaceAll("mark", "grade")
-                            .replaceAll("Mark", "Grade"));
-                    Manager.writePreference("default_data", Manager.getPreference("default_data", "")
+                            .replaceAll("mark", "grade"));
+                    Preferences.setPreference("default_data", Preferences.getPreference("default_data", "")
                             .replaceAll("period", "term")
-                            .replaceAll("Period", "Term")
-                            .replaceAll("mark", "grade")
-                            .replaceAll("Mark", "Grade"));
+                            .replaceAll("mark", "grade"));
                 }
             }
+        }
     }
 }

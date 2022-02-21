@@ -1,9 +1,8 @@
 package com.NightDreamGames.Grade.ly.Calculator;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Term implements Serializable {
+public class Term {
     public final ArrayList<Subject> subjects = new ArrayList<>();
 
     public double result;
@@ -23,11 +22,13 @@ public class Term implements Serializable {
         ArrayList<Double> coefficients = new ArrayList<>();
 
         for (Subject s : subjects) {
+            s.calculate();
+
             results.add(s.result);
             coefficients.add(s.coefficient);
         }
 
-        Calculator.calculate(results, coefficients);
+        result = Calculator.calculate(results, coefficients);
     }
 
     public ArrayList<String> getSubjects() {

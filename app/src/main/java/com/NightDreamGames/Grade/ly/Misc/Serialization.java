@@ -1,8 +1,5 @@
 package com.NightDreamGames.Grade.ly.Misc;
 
-import androidx.preference.PreferenceManager;
-
-import com.NightDreamGames.Grade.ly.Activities.MainActivity;
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Calculator.Subject;
 import com.NightDreamGames.Grade.ly.Calculator.Year;
@@ -15,16 +12,16 @@ public class Serialization {
     private static final Gson gson = new Gson();
 
     public static void Serialize() {
-        Manager.writePreference("data", gson.toJson(Manager.years));
-        Manager.writePreference("default_data", gson.toJson(Manager.termTemplate));
+        Preferences.setPreference("data", gson.toJson(Manager.years));
+        Preferences.setPreference("default_data", gson.toJson(Manager.termTemplate));
     }
 
     public static void Deserialize() {
-        if (PreferenceManager.getDefaultSharedPreferences(MainActivity.sApplication).contains("data")) {
-            Manager.years = gson.fromJson(Manager.getPreference("data", ""), new TypeToken<ArrayList<Year>>() {
+        if (Preferences.existsPreference("data")) {
+            Manager.years = gson.fromJson(Preferences.getPreference("data", ""), new TypeToken<ArrayList<Year>>() {
             }.getType());
 
-            Manager.termTemplate = gson.fromJson(Manager.getPreference("default_data", ""), new TypeToken<ArrayList<Subject>>() {
+            Manager.termTemplate = gson.fromJson(Preferences.getPreference("default_data", ""), new TypeToken<ArrayList<Subject>>() {
             }.getType());
         }
     }

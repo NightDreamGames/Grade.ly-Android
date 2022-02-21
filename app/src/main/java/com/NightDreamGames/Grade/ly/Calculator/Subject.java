@@ -2,10 +2,9 @@ package com.NightDreamGames.Grade.ly.Calculator;
 
 import com.NightDreamGames.Grade.ly.Misc.Serialization;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Subject implements Serializable {
+public class Subject {
     public final ArrayList<Test> tests = new ArrayList<>();
 
     public String name;

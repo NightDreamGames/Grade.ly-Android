@@ -1,10 +1,7 @@
 package com.NightDreamGames.Grade.ly.Calculator;
 
-import android.content.SharedPreferences;
-
-import androidx.preference.PreferenceManager;
-
 import com.NightDreamGames.Grade.ly.Activities.MainActivity;
+import com.NightDreamGames.Grade.ly.Misc.Preferences;
 import com.NightDreamGames.Grade.ly.Misc.Serialization;
 
 import java.util.ArrayList;
@@ -22,39 +19,20 @@ public class Manager {
         years = new ArrayList<>();
         years.add(new Year());
 
-        Manager.termTemplate = new ArrayList<>();
-
-        for (Year y : years) {
-            y.calculate();
-        }
+        termTemplate = new ArrayList<>();
     }
 
     public static void readPreferences() {
         interpretPreferences();
 
-        currentTerm = Integer.parseInt(getPreference("current_term", "0"));
+        currentTerm = Integer.parseInt(Preferences.getPreference("current_term", "0"));
     }
 
     public static void interpretPreferences() {
-        if (!getPreference("total_grades", "60").equals("-1"))
-            totalGrades = Integer.parseInt(getPreference("total_grades", "60"));
+        if (!Preferences.getPreference("total_grades", "60").equals("-1"))
+            totalGrades = Integer.parseInt(Preferences.getPreference("total_grades", "60"));
         else
-            totalGrades = Integer.parseInt(getPreference("custom_grade", "60"));
-    }
-
-    public static String getPreference(String key, String fallback) {
-        return String.valueOf(PreferenceManager.getDefaultSharedPreferences(MainActivity.sApplication).getString(key, fallback));
-    }
-
-    public static void writePreference(String key, String data) {
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.sApplication).edit();
-        editor.putString(key, data);
-        editor.apply();
-    }
-
-    public static void deletePreference(String key) {
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.sApplication).edit().remove(key);
-        editor.apply();
+            totalGrades = Integer.parseInt(Preferences.getPreference("custom_grade", "60"));
     }
 
     public static void calculate() {
@@ -89,7 +67,7 @@ public class Manager {
             for (int i = 0; i < getCurrentYear().terms.size(); i++) {
                 for (int j = 0; j < getCurrentYear().terms.get(i).subjects.size(); j++) {
                     String name;
-                    if (Manager.getPreference("term", "term_trimester").equals("term_trimester"))
+                    if (Preferences.getPreference("term", "term_trimester").equals("term_trimester"))
                         name = MainActivity.sApplication.getString(MainActivity.sApplication.getResources().getIdentifier("trimester_" + (i + 1), "string", MainActivity.sApplication.getPackageName()));
                     else
                         name = MainActivity.sApplication.getString(MainActivity.sApplication.getResources().getIdentifier("semester_" + (i + 1), "string", MainActivity.sApplication.getPackageName()));
@@ -106,7 +84,6 @@ public class Manager {
         return getCurrentYear().terms.get(currentTerm);
     }
 
-    @SuppressWarnings("ComparatorCombinators")
     public static void sortAll() {
         for (Year y : years) {
             for (Term p : y.terms) {

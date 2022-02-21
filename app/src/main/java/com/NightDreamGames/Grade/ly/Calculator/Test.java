@@ -1,8 +1,6 @@
 package com.NightDreamGames.Grade.ly.Calculator;
 
-import java.io.Serializable;
-
-public class Test implements Serializable {
+public class Test {
     public double grade1;
     public double grade2;
     public String name;

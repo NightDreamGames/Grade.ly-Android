@@ -22,6 +22,7 @@ import androidx.preference.PreferenceManager;
 
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Misc.Compatibility;
+import com.NightDreamGames.Grade.ly.Misc.Preferences;
 import com.NightDreamGames.Grade.ly.R;
 import com.NightDreamGames.Grade.ly.databinding.SettingsActivityBinding;
 
@@ -103,7 +104,7 @@ public class SettingsActivity extends AppCompatActivity {
                 int maxLength = 6;
                 editText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
             });
-            cGrade.setVisible(Manager.getPreference("total_grades", "60").equals("-1"));
+            cGrade.setVisible(Preferences.getPreference("total_grades", "60").equals("-1"));
 
             reset.setOnPreferenceClickListener(preference -> confirmChange());
 

@@ -1,20 +1,21 @@
 package com.NightDreamGames.Grade.ly.Calculator;
 
+import com.NightDreamGames.Grade.ly.Misc.Preferences;
+
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Locale;
 
 public class Calculator {
     @SuppressWarnings("ComparatorCombinators")
     public static void sort1(ArrayList<Subject> data, String sortMode) {
         if (data.size() >= 2) {
-            switch (Integer.parseInt(Manager.getPreference(sortMode, "0"))) {
+            switch (Integer.parseInt(Preferences.getPreference(sortMode, "0"))) {
                 case 0:
-                    Collections.sort(data, (o1, o2) -> Normalizer.normalize(o1.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").compareTo(Normalizer.normalize(o2.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "")));
+                    data.sort((o1, o2) -> Normalizer.normalize(o1.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").compareTo(Normalizer.normalize(o2.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "")));
                     break;
                 case 1:
-                    Collections.sort(data, (o1, o2) -> Double.compare(o2.result, o1.result));
+                    data.sort((o1, o2) -> Double.compare(o2.result, o1.result));
                     break;
             }
         }
@@ -23,12 +24,12 @@ public class Calculator {
     @SuppressWarnings("ComparatorCombinators")
     public static void sort2(ArrayList<Test> data) {
         if (data.size() >= 2) {
-            switch (Integer.parseInt(Manager.getPreference("sort_mode2", "0"))) {
+            switch (Integer.parseInt(Preferences.getPreference("sort_mode2", "0"))) {
                 case 0:
-                    Collections.sort(data, (o1, o2) -> Normalizer.normalize(o1.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").compareTo(Normalizer.normalize(o2.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "")));
+                    data.sort((o1, o2) -> Normalizer.normalize(o1.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").compareTo(Normalizer.normalize(o2.name.toLowerCase(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "")));
                     break;
                 case 1:
-                    Collections.sort(data, (o1, o2) -> Double.compare(o2.grade1 / o2.grade2, o1.grade1 / o1.grade2));
+                    data.sort((o1, o2) -> Double.compare(o2.grade1 / o2.grade2, o1.grade1 / o1.grade2));
                     break;
             }
         }
@@ -56,8 +57,8 @@ public class Calculator {
     }
 
     public static double round(double n) {
-        String rounding_mode = Manager.getPreference("rounding_mode", "rounding_up");
-        int round_to = Integer.parseInt(Manager.getPreference("round_to", "1"));
+        String rounding_mode = Preferences.getPreference("rounding_mode", "rounding_up");
+        int round_to = Integer.parseInt(Preferences.getPreference("round_to", "1"));
 
         switch (rounding_mode) {
             case "rounding_up":

@@ -26,6 +26,7 @@ import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Calculator.Term;
 import com.NightDreamGames.Grade.ly.Misc.Compatibility;
 import com.NightDreamGames.Grade.ly.Misc.CustomRecyclerViewAdapter;
+import com.NightDreamGames.Grade.ly.Misc.Preferences;
 import com.NightDreamGames.Grade.ly.Misc.Serialization;
 import com.NightDreamGames.Grade.ly.R;
 import com.NightDreamGames.Grade.ly.databinding.MainSubjectActivityBinding;
@@ -43,9 +44,10 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sApplication = getApplication();
+
         Compatibility.periodPreferences();
 
-        switch (Manager.getPreference("dark_theme", "auto")) {
+        switch (Preferences.getPreference("dark_theme", "auto")) {
             case "on":
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 break;
@@ -65,11 +67,13 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
 
         Serialization.Deserialize();
 
-        if (Boolean.parseBoolean(Manager.getPreference("isFirstRun", "true"))) {
+        if (Boolean.parseBoolean(Preferences.getPreference("isFirstRun", "true"))) {
             startActivity(new Intent(MainActivity.this, SetupActivity.class));
         }
 
         Compatibility.init();
+
+        Manager.calculate();
     }
 
     @Override
@@ -112,17 +116,17 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
     protected void setTitle() {
         switch (Manager.currentTerm) {
             case 0:
-                if (Manager.getPreference("term", "term_trimester").equals("term_semester"))
+                if (Preferences.getPreference("term", "term_trimester").equals("term_semester"))
                     setTitle(R.string.semester_1);
-                else if (Manager.getPreference("term", "term_trimester").equals("term_trimester"))
+                else if (Preferences.getPreference("term", "term_trimester").equals("term_trimester"))
                     setTitle(R.string.trimester_1);
-                else if (Manager.getPreference("term", "term_trimester").equals("term_year"))
+                else if (Preferences.getPreference("term", "term_trimester").equals("term_year"))
                     setTitle(R.string.year);
                 break;
             case 1:
-                if (Manager.getPreference("term", "term_trimester").equals("term_semester"))
+                if (Preferences.getPreference("term", "term_trimester").equals("term_semester"))
                     setTitle(R.string.semester_2);
-                else if (Manager.getPreference("term", "term_trimester").equals("term_trimester"))
+                else if (Preferences.getPreference("term", "term_trimester").equals("term_trimester"))
                     setTitle(R.string.trimester_2);
                 break;
             case 2:
@@ -152,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        switch (Manager.getPreference("term", "term_trimester")) {
+        switch (Preferences.getPreference("term", "term_trimester")) {
             case "term_trimester":
                 menu.findItem(R.id.trimester_1).setVisible(true);
                 menu.findItem(R.id.trimester_2).setVisible(true);
@@ -182,12 +186,12 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
         int id = item.getItemId();
 
         if (id == R.id.sort_az) {
-            Manager.writePreference("sort_mode", "0");
+            Preferences.setPreference("sort_mode", "0");
             Manager.sortAll();
             updateView();
             return true;
         } else if (id == R.id.sort_grade) {
-            Manager.writePreference("sort_mode", "1");
+            Preferences.setPreference("sort_mode", "1");
             Manager.sortAll();
             updateView();
             return true;
@@ -197,27 +201,27 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
             return true;
         } else if (id == R.id.semester_1 || id == R.id.trimester_1) {
             Manager.currentTerm = 0;
-            Manager.writePreference("current_term", String.valueOf(Manager.currentTerm));
+            Preferences.setPreference("current_term", String.valueOf(Manager.currentTerm));
             adaptView();
             updateView();
             return true;
         } else if (id == R.id.semester_2 || id == R.id.trimester_2) {
             Manager.currentTerm = 1;
-            Manager.writePreference("current_term", String.valueOf(Manager.currentTerm));
+            Preferences.setPreference("current_term", String.valueOf(Manager.currentTerm));
             adaptView();
             updateView();
             return true;
         } else if (id == R.id.trimester_3) {
             Manager.currentTerm = 2;
-            Manager.writePreference("current_term", String.valueOf(Manager.currentTerm));
+            Preferences.setPreference("current_term", String.valueOf(Manager.currentTerm));
             adaptView();
             updateView();
             return true;
         } else if (id == R.id.year) {
-            if (Manager.getPreference("term", "term_trimester").equals("term_year"))
+            if (Preferences.getPreference("term", "term_trimester").equals("term_year"))
                 Manager.currentTerm = 0;
             else Manager.currentTerm = -1;
-            Manager.writePreference("current_term", String.valueOf(Manager.currentTerm));
+            Preferences.setPreference("current_term", String.valueOf(Manager.currentTerm));
             adaptView();
             updateView();
             return true;

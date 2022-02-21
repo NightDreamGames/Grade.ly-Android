@@ -43,12 +43,9 @@ public class SubjectDialogManager extends DialogFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        // Verify that the host activity implements the callback interface
         try {
-            // Instantiate the TestDialogListener so we can send events to the host
             listener = (SubjectDialogListener) context;
         } catch (ClassCastException e) {
-            // The activity doesn't implement the interface, throw exception
             throw new ClassCastException(this + " must implement TestDialogListener");
         }
     }
@@ -70,7 +67,6 @@ public class SubjectDialogManager extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        // Build the dialog and set up the button click handlers
         View dialogView = getLayoutInflater().inflate(R.layout.subject_dialog, null);
         EditText editText0 = dialogView.findViewById(R.id.nameEditTextSubject);
         EditText editText2 = dialogView.findViewById(R.id.coefficientEditText);
@@ -139,6 +135,7 @@ public class SubjectDialogManager extends DialogFragment {
     public interface SubjectDialogListener {
         void onDialogPositiveClick(DialogFragment dialog, String name, double coefficient, int type);
 
+        @SuppressWarnings("EmptyMethod")
         void onDialogNegativeClick(DialogFragment dialog);
     }
 }

@@ -1,16 +1,17 @@
 package com.NightDreamGames.Grade.ly.Calculator;
 
-import java.io.Serializable;
+import com.NightDreamGames.Grade.ly.Misc.Preferences;
+
 import java.util.ArrayList;
 
-public class Year implements Serializable {
+public class Year {
     public final ArrayList<Term> terms = new ArrayList<>();
 
     public double result;
 
     public Year() {
         int k = 0;
-        switch (Manager.getPreference("term", "term_trimester")) {
+        switch (Preferences.getPreference("term", "term_trimester")) {
             case "term_trimester":
                 k = 3;
                 break;
@@ -35,10 +36,12 @@ public class Year implements Serializable {
         ArrayList<Double> coefficients = new ArrayList<>();
 
         for (Term t : terms) {
+            t.calculate();
+
             results.add(t.result);
             coefficients.add(1.0);
         }
 
-        Calculator.calculate(results, coefficients);
+        result = Calculator.calculate(results, coefficients);
     }
 }

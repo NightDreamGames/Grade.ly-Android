@@ -20,6 +20,7 @@ import com.NightDreamGames.Grade.ly.Calculator.Calculator;
 import com.NightDreamGames.Grade.ly.Calculator.Manager;
 import com.NightDreamGames.Grade.ly.Calculator.Subject;
 import com.NightDreamGames.Grade.ly.Misc.CustomRecyclerViewAdapter;
+import com.NightDreamGames.Grade.ly.Misc.Preferences;
 import com.NightDreamGames.Grade.ly.Misc.TestDialogManager;
 import com.NightDreamGames.Grade.ly.R;
 import com.NightDreamGames.Grade.ly.databinding.MainSubjectActivityBinding;
@@ -117,12 +118,12 @@ public class SubjectActivity extends AppCompatActivity implements CustomRecycler
             finish();
             return true;
         } else if (id == R.id.sort_az) {
-            Manager.writePreference("sort_mode2", "0");
+            Preferences.setPreference("sort_mode2", "0");
             Manager.sortAll();
             updateView();
             return true;
         } else if (id == R.id.sort_grade) {
-            Manager.writePreference("sort_mode2", "1");
+            Preferences.setPreference("sort_mode2", "1");
             Manager.sortAll();
             updateView();
             return true;
