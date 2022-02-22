@@ -2,7 +2,6 @@ package com.NightDreamGames.Grade.ly.Misc;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -137,9 +136,9 @@ public class TestDialogManager extends DialogFragment {
         AlertDialog u = builder.create();
         u.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
-        if ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES) {
+        /*if ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES) {
             u.getWindow().setBackgroundDrawableResource(R.color.blue_grey_950);
-        }
+        }*/
 
         return u;
     }
