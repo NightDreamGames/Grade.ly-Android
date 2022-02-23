@@ -36,10 +36,12 @@ public class Compatibility {
         while (Manager.getCurrentYear().terms.size() < k)
             Manager.getCurrentYear().terms.add(new Term());
 
-        if (Manager.currentTerm >= Manager.getCurrentYear().terms.size())
+        if (Manager.currentTerm >= Manager.getCurrentYear().terms.size()) {
             Manager.currentTerm = 0;
-
+            Preferences.setPreference("current_term", String.valueOf(Manager.currentTerm));
+        }
         Manager.calculate();
+        Serialization.Serialize();
     }
 
     public static void periodPreferences() {

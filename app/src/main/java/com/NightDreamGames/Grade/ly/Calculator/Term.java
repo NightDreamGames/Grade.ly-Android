@@ -3,7 +3,7 @@ package com.NightDreamGames.Grade.ly.Calculator;
 import java.util.ArrayList;
 
 public class Term {
-    public final ArrayList<Subject> subjects = new ArrayList<>();
+    public ArrayList<Subject> subjects = new ArrayList<>();
 
     public double result;
 

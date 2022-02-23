@@ -26,8 +26,6 @@ public class Year {
             terms.add(new Term());
         }
 
-        Manager.currentTerm = 0;
-
         calculate();
     }
 

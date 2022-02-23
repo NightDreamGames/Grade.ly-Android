@@ -186,12 +186,12 @@ public class MainActivity extends AppCompatActivity implements CustomRecyclerVie
         int id = item.getItemId();
 
         if (id == R.id.sort_az) {
-            Preferences.setPreference("sort_mode", "0");
+            Preferences.setPreference("sort_mode1", "0");
             Manager.sortAll();
             updateView();
             return true;
         } else if (id == R.id.sort_grade) {
-            Preferences.setPreference("sort_mode", "1");
+            Preferences.setPreference("sort_mode1", "1");
             Manager.sortAll();
             updateView();
             return true;

@@ -23,6 +23,8 @@ public class Serialization {
 
             Manager.termTemplate = gson.fromJson(Preferences.getPreference("default_data", ""), new TypeToken<ArrayList<Subject>>() {
             }.getType());
+
+
         }
     }
 }

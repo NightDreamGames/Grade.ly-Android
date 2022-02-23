@@ -5,7 +5,7 @@ import com.NightDreamGames.Grade.ly.Misc.Serialization;
 import java.util.ArrayList;
 
 public class Subject {
-    public final ArrayList<Test> tests = new ArrayList<>();
+    public ArrayList<Test> tests = new ArrayList<>();
 
     public String name;
     public double coefficient;

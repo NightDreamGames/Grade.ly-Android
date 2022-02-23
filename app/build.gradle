@@ -13,7 +13,7 @@ android {
         applicationId 'com.NightDreamGames.Grade.ly'
         minSdk 26
         targetSdk 32
-        versionCode 30
+        versionCode 32
         versionName "1.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
