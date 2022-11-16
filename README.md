@@ -21,7 +21,7 @@ A clean and open-source app to track and manage your school grades.
 
 ### Quick Links
 
-<a href='https://nightdreamgames.github.io'>
+<a href='https://nightdreamgames.com'>
 <img src='https://img.shields.io/badge/HOMEPAGE-gray?style=for-the-badge'>
 </a>
 
@@ -42,7 +42,8 @@ A clean and open-source app to track and manage your school grades.
 
 - Android: Search for "Grade.ly" on
   the [Google Play Store](https://play.google.com/store/apps/details?id=com.NightDreamGames.Grade.ly)
-- iOS and Web: coming soon 👀
+- iOS: Coming very soon 👀
+- Web: Consideration
 
 ---
 
@@ -77,8 +78,7 @@ your new device.
 
 Here's a brief high-level overview of the tech stack Grade.ly uses:
 
-- This project uses the Android framework, with Android Studio.
-- A Flutter rewrite is planned to port Grade.ly to other platforms, like iOS and Web.
+- This project uses the Flutter framework, with builds for Android, iOS, and soon Web.
 - The app design adheres to the material design guidelines.
 
 # ✍️ Contributing
@@ -91,7 +91,6 @@ If you have a contribution in mind, don't hesitate to contact us, so we can work
 
 # ⚠️ License
 
-Grade.ly is a free and open-source software licensed under the MIT License. You can use it for
-whatever you want, as long as you give appropriate copyright credits.
+[GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 
 ---
