@@ -1,4 +1,9 @@
 <div align='center'>
+  
+### This repository is deprecated and will not get any updates. It has been replaced by [the Flutter version of Graded](https://github.com/NightDreamGames/Graded) that has feature parity and is cross-platform.
+
+---
+
 <a href="https://play.google.com/store/apps/details?id=com.NightDreamGames.Grade.ly">
 <img src="https://user-images.githubusercontent.com/49079695/152243403-eea6e8c0-30c3-48c2-8866-3e576ba2bf63.png" width="600" />
 </a>
